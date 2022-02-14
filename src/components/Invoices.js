@@ -46,7 +46,10 @@ function Invoices() {
       <section className="Invoices-header">
         <div className="Invoices-titles">
           <h1>Invoices</h1>
-          <p>There are 7 total invoices</p>
+          <p>
+            <span className="hidden">There are</span> 7{" "}
+            <span className="hidden">total</span> invoices
+          </p>
         </div>
         <div className="Invoices-actions">
           <div className="Invoices-filter-container">
@@ -54,7 +57,7 @@ function Invoices() {
               className="Invoices-filter-triger bold"
               onClick={handleFilterStatus}
             >
-              Filter by status
+              Filter <span className="hidden">by status</span>
               <img
                 src={iconArrowDown}
                 alt="arrow down"
@@ -102,13 +105,15 @@ function Invoices() {
               </ul>
             )}
           </div>
-          <button className="btn btn-violet Invoices-btn">
+          <button className="btn btn-violet Invoices-btn bold">
             <img
               src={iconPlus}
               alt="plus icon"
               className="Invoices-icon-plus"
             />
-            New Invoice
+            <p>
+              New <span className="hidden">Invoice</span>
+            </p>
           </button>
         </div>
       </section>

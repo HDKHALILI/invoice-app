@@ -7,13 +7,13 @@ function Invoice(props) {
     <a href="/" className="Invoice">
       <div className="Invoice-basic-info color-gray-blue">
         <div className="Invoice-id-duedate">
-          <div>
+          <div className="Invoice-id">
             <span>#</span>
             <span className="color-black-900 bold">{id}</span>
           </div>
-          <span>Due {paymentDue}</span>
+          <span className="Invoice-duedate">Due {paymentDue}</span>
         </div>
-        <span>{clientName}</span>
+        <span className="Invoice-client-name">{clientName}</span>
       </div>
       <div className="Invoice-amount-info">
         <div className="Invoice-amount">
@@ -23,7 +23,7 @@ function Invoice(props) {
           <span>&#9679;</span>
           {status}
         </div>
-        <div className="Invoice-arrow-left">
+        <div className="Invoice-arrow-left hidden">
           <img src={iconArrowRight} alt="arrow right" />
         </div>
       </div>

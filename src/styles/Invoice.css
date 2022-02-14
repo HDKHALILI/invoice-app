@@ -4,7 +4,6 @@
   align-items: center;
   background-color: #fff;
   border-radius: 1rem;
-  /* padding: 3rem 2rem; */
   padding: 0 2rem;
   height: 7.2rem;
   margin: 1rem 0 2rem;
@@ -22,7 +21,7 @@
 .Invoice-basic-info {
   display: flex;
   justify-content: space-between;
-  width: 55%;
+  width: 60%;
 }
 
 .Invoice-id-duedate {
@@ -33,17 +32,29 @@
   width: 60%;
 }
 
+.Invoice-id {
+  width: 33%;
+}
+
+.Invoice-duedate {
+  width: 60%;
+}
+
+.Invoice-client-name {
+  width: 35%;
+}
+
 .Invoice-amount-info {
   display: flex;
   flex-direction: row;
-  justify-content: stretch;
+  /* justify-content: stretch; */
   align-items: center;
   width: 35%;
 }
 
 .Invoice-status {
   width: 10.4rem;
-  min-width: 10.4rem;
+  max-width: 10.4rem;
   border-radius: 0.6rem;
   display: flex;
   justify-content: center;
@@ -67,4 +78,108 @@
   width: 10%;
   display: flex;
   justify-content: flex-end;
+}
+/* 
+@media screen and (max-width: 640px) {
+  .Invoice {
+    flex-direction: column;
+    height: auto;
+    padding: 2rem 2rem;
+  }
+
+  .Invoice-basic-info {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .Invoice-id-duedate {
+    flex-direction: column;
+  }
+
+  .Invoice-amount-info {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .Invoice-id-duedate {
+    align-items: flex-start;
+  }
+
+  .Invoice-client-name {
+    width: auto;
+  }
+
+  .Invoice-duedate {
+    margin-top: 2rem;
+  }
+
+  .Invoice-amount {
+    justify-content: flex-start;
+  }
+} */
+
+@media screen and (max-width: 600px) {
+  .Invoice-basic-info {
+    align-items: center;
+  }
+  .Invoice-id-duedate {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .Invoice-duedate {
+    width: 100%;
+  }
+
+  .Invoice-client-name {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .Invoice {
+    flex-direction: column;
+    height: auto;
+    padding: 2rem 2rem;
+  }
+
+  .Invoice-basic-info {
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .Invoice-id-duedate {
+    flex-direction: column;
+  }
+
+  .Invoice-amount-info {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .Invoice-id-duedate {
+    align-items: flex-start;
+  }
+
+  .Invoice-client-name {
+    width: auto;
+  }
+
+  .Invoice-duedate {
+    margin-top: 2.5rem;
+  }
+
+  .Invoice-amount {
+    justify-content: flex-start;
+  }
 }

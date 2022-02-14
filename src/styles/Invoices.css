@@ -15,7 +15,6 @@
   font-weight: 700;
   line-height: 3.6rem;
   letter-spacing: -1px;
-  margin-bottom: 0.8rem;
 }
 
 .Invoices-actions {
@@ -125,4 +124,27 @@
 
 .filter-close {
   transform: rotate(0deg);
+}
+
+@media screen and (max-width: 520px) {
+  .Invoices-titles h1 {
+    font-size: 2rem;
+  }
+
+  .Invoices-btn {
+    padding: 0.85rem 1.5rem;
+    padding-left: 0.8rem;
+    width: 9rem;
+    margin-left: 2rem;
+  }
+
+  .Invoices-arrow-down {
+    margin-left: 1rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .Invoices-btn {
+    margin-left: 0rem;
+  }
 }
