@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Invoice from "./Invoice";
 import invoicesData from "../data.json";
@@ -7,13 +7,40 @@ import iconArrowDown from "../assets/icon-arrow-down.svg";
 
 import "../styles/Invoices.css";
 
+function filterInvoices(invoices, filters) {
+  if (filters.length === 0) return invoices;
+
+  const filtered = [];
+  invoices.forEach(invoice => {
+    if (filters.includes(invoice.status)) {
+      filtered.push(invoice);
+    }
+  });
+
+  return filtered;
+}
+
 function Invoices() {
   const [invoices, setInvoices] = useState(invoicesData);
   const [filterStatus, setFilterStatus] = useState("close");
+  const [filters, setFilters] = useState([]);
 
   const handleFilterStatus = event => {
     setFilterStatus(filterStatus === "close" ? "open" : "close");
   };
+
+  const handleChange = event => {
+    if (event.target.checked) {
+      setFilters([...filters, event.target.value]);
+    } else {
+      setFilters(filters.filter(value => value !== event.target.value));
+    }
+  };
+
+  useEffect(() => {
+    setInvoices(filterInvoices(invoicesData, filters));
+  }, [filters, setInvoices]);
+
   return (
     <div className="Invoices">
       <section className="Invoices-header">
@@ -42,6 +69,7 @@ function Invoices() {
                     id="paid"
                     value="paid"
                     className="checkbox"
+                    onChange={handleChange}
                   />
                   <label htmlFor="paid" className="bold">
                     Paid
@@ -53,6 +81,7 @@ function Invoices() {
                     id="pending"
                     value="pending"
                     className="checkbox"
+                    onChange={handleChange}
                   />
                   <label htmlFor="pending" className="bold">
                     Pending
@@ -64,6 +93,7 @@ function Invoices() {
                     id="draft"
                     value="draft"
                     className="checkbox"
+                    onChange={handleChange}
                   />
                   <label htmlFor="draft" className="bold">
                     Draft
