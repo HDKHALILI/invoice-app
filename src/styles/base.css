@@ -1,0 +1,105 @@
+/* Variables */
+:root {
+  --violet: #7c5dfa;
+  --violet-light: #9277ff;
+  --red: #ec5757;
+  --red-light: rgb(255, 151, 151);
+  --gray: #888eb0;
+  --gray-dark: #1e2139;
+  --gray-blue: #7e88c3;
+  --gray-blue-light: #dfe3fa;
+  --denim: #252945;
+  --black-900: #0c0e18;
+  --black-800: #141625;
+  --cloudy-white: #f8f8fb;
+  --green: #33d69f;
+  --orange: #ff8f00;
+}
+
+/* Global Styles */
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-family: "Spartan", sans-serif;
+}
+
+body {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  background-color: var(--cloudy-white);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+/* Colors Classes */
+.color-gray-blue {
+  color: var(--gray-blue);
+}
+
+.color-black-900 {
+  color: var(--black-900);
+}
+
+/* Typography */
+.bold {
+  font-weight: 700;
+}
+
+/* Payment Status */
+.color-pending {
+  color: var(--orange);
+}
+
+.bg-pending {
+  background-color: rgb(255, 143, 0, 0.06);
+}
+
+.color-paid {
+  color: var(--green);
+}
+
+.bg-paid {
+  background-color: rgb(51, 214, 159, 0.06);
+}
+
+.color-draft {
+  color: #373b53;
+}
+
+.bg-draft {
+  background-color: rgba(55, 59, 83, 0.06);
+}
+
+/* Button */
+.btn {
+  border: none;
+  border-radius: 2.4rem;
+  color: #fff;
+  padding: 1.6rem 2rem;
+  cursor: pointer;
+}
+
+.btn-violet {
+  background-color: var(--violet);
+}
+/* Imports */
+@import "./App.css";
+@import "./Nav.css";
+@import "./Invoices.css";
+@import "./Invoice.css";

@@ -2,19 +2,74 @@ import { useState } from "react";
 
 import Invoice from "./Invoice";
 import invoicesData from "../data.json";
+import iconPlus from "../assets/icon-plus.svg";
+import iconArrowDown from "../assets/icon-arrow-down.svg";
+
+import "../styles/Invoices.css";
 
 function Invoices() {
   const [invoices, setInvoices] = useState(invoicesData);
   return (
     <div className="Invoices">
       <section className="Invoices-header">
-        <div>
+        <div className="Invoices-titles">
           <h1>Invoices</h1>
           <p>There are 7 total invoices</p>
         </div>
         <div className="Invoices-actions">
-          <select></select>
-          <button>New Invoice</button>
+          <div className="Invoices-filter-container">
+            <span className="Invoices-filter-triger bold">
+              Filter by status
+              <img
+                src={iconArrowDown}
+                alt="arrow down"
+                className="Invoices-arrow-down"
+              />
+            </span>
+            <ul className="Invoices-filter-options">
+              <li>
+                <input
+                  type="checkbox"
+                  id="paid"
+                  value="paid"
+                  className="checkbox"
+                />
+                <label htmlFor="paid" className="bold">
+                  Paid
+                </label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="pending"
+                  value="pending"
+                  className="checkbox"
+                />
+                <label htmlFor="pending" className="bold">
+                  Pending
+                </label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="draft"
+                  value="draft"
+                  className="checkbox"
+                />
+                <label htmlFor="draft" className="bold">
+                  Draft
+                </label>
+              </li>
+            </ul>
+          </div>
+          <button className="btn btn-violet Invoices-btn">
+            <img
+              src={iconPlus}
+              alt="plus icon"
+              className="Invoices-icon-plus"
+            />
+            New Invoice
+          </button>
         </div>
       </section>
       <section className="Invoices-lists">

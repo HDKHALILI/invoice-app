@@ -1,0 +1,119 @@
+.Invoices {
+  width: 77rem;
+  max-width: 77rem;
+  padding: 0 2rem;
+}
+
+.Invoices-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6rem;
+}
+
+.Invoices-titles h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 3.6rem;
+  letter-spacing: -1px;
+  margin-bottom: 0.8rem;
+}
+
+.Invoices-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Invoices-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 2rem;
+  padding-left: 1rem;
+  width: 15rem;
+  margin-left: 2rem;
+  transition: background-color 0.3s;
+}
+
+.Invoices-icon-plus {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 50%;
+  /* margin-right: 1rem; */
+}
+
+.Invoices-btn:hover {
+  background-color: var(--violet-light);
+}
+
+/* Filter styles */
+.Invoices-filter-container {
+  position: relative;
+  margin-right: 2rem;
+}
+
+.Invoices-filter-triger {
+  cursor: pointer;
+}
+
+.Invoices-arrow-down {
+  margin-left: 1.5rem;
+}
+
+.Invoices-filter-options {
+  list-style: none;
+  background-color: #fff;
+  border-radius: 0.8rem;
+  padding: 1.5rem 2.5rem;
+  padding-right: 6rem;
+  position: absolute;
+  left: -2.3rem;
+  top: 4.5rem;
+  box-shadow: 0 3px 8px 0px rgba(223, 227, 250);
+}
+
+.Invoices-filter-options li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.Invoices-filter-options li:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Checkbox */
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 0.3rem;
+  background-color: var(--gray-blue-light);
+  background-image: url(../assets/icon-check.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 0%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  /* transition: all 0.2s; */
+}
+
+.checkbox:hover {
+  border-color: var(--violet);
+}
+
+.checkbox:checked {
+  background-color: var(--violet);
+  background-image: url(../assets/icon-check.svg);
+  background-repeat: no-repeat;
+  background-size: 90%;
+  background-position: center center;
+  transition: all 0.3s;
+}
+
+.checkbox + label {
+  margin-left: 1.6rem;
+  cursor: pointer;
+}

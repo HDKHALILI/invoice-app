@@ -1,3 +1,11 @@
 .App {
-  text-align: center;
+  display: flex;
+}
+
+.App-content {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 6rem;
 }
