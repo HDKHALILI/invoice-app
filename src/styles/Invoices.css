@@ -58,6 +58,7 @@
 
 .Invoices-arrow-down {
   margin-left: 1.5rem;
+  transition: transform 0.3s;
 }
 
 .Invoices-filter-options {
@@ -116,4 +117,12 @@
 .checkbox + label {
   margin-left: 1.6rem;
   cursor: pointer;
+}
+
+.filter-open {
+  transform: rotate(180deg);
+}
+
+.filter-close {
+  transform: rotate(0deg);
 }

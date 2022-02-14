@@ -9,6 +9,11 @@ import "../styles/Invoices.css";
 
 function Invoices() {
   const [invoices, setInvoices] = useState(invoicesData);
+  const [filterStatus, setFilterStatus] = useState("close");
+
+  const handleFilterStatus = event => {
+    setFilterStatus(filterStatus === "close" ? "open" : "close");
+  };
   return (
     <div className="Invoices">
       <section className="Invoices-header">
@@ -18,49 +23,54 @@ function Invoices() {
         </div>
         <div className="Invoices-actions">
           <div className="Invoices-filter-container">
-            <span className="Invoices-filter-triger bold">
+            <span
+              className="Invoices-filter-triger bold"
+              onClick={handleFilterStatus}
+            >
               Filter by status
               <img
                 src={iconArrowDown}
                 alt="arrow down"
-                className="Invoices-arrow-down"
+                className={`Invoices-arrow-down filter-${filterStatus}`}
               />
             </span>
-            <ul className="Invoices-filter-options">
-              <li>
-                <input
-                  type="checkbox"
-                  id="paid"
-                  value="paid"
-                  className="checkbox"
-                />
-                <label htmlFor="paid" className="bold">
-                  Paid
-                </label>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  id="pending"
-                  value="pending"
-                  className="checkbox"
-                />
-                <label htmlFor="pending" className="bold">
-                  Pending
-                </label>
-              </li>
-              <li>
-                <input
-                  type="checkbox"
-                  id="draft"
-                  value="draft"
-                  className="checkbox"
-                />
-                <label htmlFor="draft" className="bold">
-                  Draft
-                </label>
-              </li>
-            </ul>
+            {filterStatus === "open" && (
+              <ul className="Invoices-filter-options">
+                <li>
+                  <input
+                    type="checkbox"
+                    id="paid"
+                    value="paid"
+                    className="checkbox"
+                  />
+                  <label htmlFor="paid" className="bold">
+                    Paid
+                  </label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    id="pending"
+                    value="pending"
+                    className="checkbox"
+                  />
+                  <label htmlFor="pending" className="bold">
+                    Pending
+                  </label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    id="draft"
+                    value="draft"
+                    className="checkbox"
+                  />
+                  <label htmlFor="draft" className="bold">
+                    Draft
+                  </label>
+                </li>
+              </ul>
+            )}
           </div>
           <button className="btn btn-violet Invoices-btn">
             <img
