@@ -148,7 +148,13 @@
   background-color: #fff;
   display: flex;
   justify-content: center;
+  padding: 2rem 3rem;
   display: none;
+}
+
+.InvoiceDetails-footer .btn-violet {
+  /* padding: 1.5rem 4rem; */
+  width: 14.9rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -188,8 +194,11 @@
 
   .InvoiceDetails-footer {
     display: flex;
-    padding: 2rem;
     margin-top: 6rem;
+  }
+
+  .InvoiceDetails-total .font-size-xlarge {
+    font-size: 2rem;
   }
 
   .InvoiceDetails-footer .InvoiceDetails-actions {

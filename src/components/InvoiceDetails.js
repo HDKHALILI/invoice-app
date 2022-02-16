@@ -39,7 +39,7 @@ function InvoiceDetails(props) {
         <section className="InvoiceDetails-content color-gray-blue">
           <div className="InvoiceDetails-content-top-row">
             <div>
-              <div className="mb-medium">
+              <div className="mb-medium font-size-medium">
                 <span>#</span>
                 <span className="color-black-900 bold">{id}</span>
               </div>
@@ -57,20 +57,20 @@ function InvoiceDetails(props) {
               <div className="InvoiceDetails-dates">
                 <div>
                   Invoice Date
-                  <span className="bold font-size-1em mt-medium color-black-900">
+                  <span className="bold font-size-medium mt-medium color-black-900">
                     {createdAt}
                   </span>
                 </div>
                 <div>
                   Payment Due
-                  <span className="bold font-size-1em mt-medium color-black-900">
+                  <span className="bold font-size-medium mt-medium color-black-900">
                     {paymentDue}
                   </span>
                 </div>
               </div>
               <div className="InvoiceDetails-client">
                 <span className="mb-medium">Bill to</span>
-                <h1 className="font-size-1em color-black-900 mb-medium">
+                <h1 className="font-size-medium color-black-900 mb-medium">
                   {clientName}
                 </h1>
                 <div className="InvoiceDetails-client-address">
@@ -83,7 +83,7 @@ function InvoiceDetails(props) {
             </div>
             <div className="InvoiceDetails-client-email">
               <span className="mb-medium">Sent to</span>
-              <span className="bold color-black-900 font-size-1em">
+              <span className="bold color-black-900 font-size-medium">
                 {clientEmail}
               </span>
             </div>
@@ -140,7 +140,7 @@ function InvoiceDetails(props) {
             </div>
             <div className="InvoiceDetails-total color-gray-blue">
               <span>Amount Due</span>
-              <span className="bold color-white font-size-1em">
+              <span className="bold color-white font-size-xlarge">
                 &pound;{total}
               </span>
             </div>

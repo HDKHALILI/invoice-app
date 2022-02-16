@@ -66,8 +66,16 @@ code {
   font-weight: 700;
 }
 
-.font-size-1em {
-  font-size: 1.6rem;
+.font-size-xlarge {
+  font-size: 2.4rem;
+}
+
+.font-size-large {
+  font-size: 2rem;
+}
+
+.font-size-medium {
+  font-size: 1.5rem;
 }
 
 /* Position */
