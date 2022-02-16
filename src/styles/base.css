@@ -8,6 +8,7 @@
   --gray-dark: #1e2139;
   --gray-blue: #7e88c3;
   --gray-blue-light: #dfe3fa;
+  --gray-blue-verylight: #f9fafe;
   --denim: #252945;
   --black-900: #0c0e18;
   --black-800: #141625;
@@ -56,12 +57,33 @@ code {
   color: var(--black-900);
 }
 
+.color-white {
+  color: #fff;
+}
+
 /* Typography */
 .bold {
   font-weight: 700;
 }
 
+.font-size-1em {
+  font-size: 1.6rem;
+}
+
+/* Position */
+.text-right {
+  text-align: right;
+}
+
 /* Payment Status */
+.status {
+  width: 10.4rem;
+  max-width: 10.4rem;
+  border-radius: 0.6rem;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
 .color-pending {
   color: var(--orange);
 }
@@ -93,18 +115,91 @@ code {
   color: #fff;
   padding: 1.6rem 2rem;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .btn-violet {
   background-color: var(--violet);
 }
 
+.btn-violet:hover {
+  background-color: var(--violet-light);
+}
+
+.btn-edit {
+  background-color: var(--gray-blue-verylight);
+  color: var(--gray);
+}
+
+.btn-edit:hover {
+  background-color: var(--gray-blue-light);
+}
+
+.btn-delete {
+  background-color: var(--red);
+}
+
+.btn-delete:hover {
+  background-color: var(--red-light);
+}
+
 .text-center {
   text-align: center;
 }
 
+/* Spacing */
+.mt-large {
+  margin-top: 2.5rem;
+}
+
+.mt-medium {
+  margin-top: 1.6rem;
+}
+
+.mt-small {
+  margin-top: 1rem;
+}
+
+.mb-large {
+  margin-bottom: 2.5rem;
+}
+
+.mb-xlarge {
+  margin-bottom: 3.5rem;
+}
+
+.mb-medium {
+  margin-bottom: 1.6rem;
+}
+
+.mb-small {
+  margin-bottom: 1rem;
+}
+
+.mb-xsmall {
+  margin-bottom: 0.5rem;
+}
+
+.mr-medium {
+  margin-right: 1.6rem;
+}
+
+.mr-small {
+  margin-right: 1rem;
+}
+
+/* Go Back */
+.go-back {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.go-back:hover {
+  color: var(--gray-blue);
+}
 /* Imports */
 @import "./App.css";
 @import "./Nav.css";
 @import "./Invoices.css";
 @import "./Invoice.css";
+@import "./InvoiceDetails.css";

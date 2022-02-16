@@ -1,0 +1,251 @@
+.InvoiceDetails {
+  display: flex;
+  flex-direction: column;
+  width: 77rem;
+  max-width: 77rem;
+}
+
+.InvoiceDetails-main {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.InvoiceDetails-header {
+  background-color: #fff;
+  border-radius: 0.8rem;
+  box-shadow: 0 3px 8px 0px rgba(223, 227, 250);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8.8rem;
+  padding: 0 2.5rem;
+  margin-top: 5rem;
+}
+
+.InvoiceDetails-status-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 15.9rem;
+}
+
+.InvoiceDetails-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 30.9rem;
+  max-width: 30.9rem;
+}
+
+.status span {
+  margin-right: 1rem;
+}
+
+/* Content */
+.InvoiceDetails-content {
+  background-color: #fff;
+  border-radius: 0.8rem;
+  margin-top: 2rem;
+  padding: 3rem;
+  box-shadow: 0 3px 8px 0px rgba(223, 227, 250);
+}
+
+.InvoiceDetails-content-top-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.InvoiceDetails-sender-address {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.InvoiceDetails-content-middle-row {
+  display: flex;
+  justify-content: space-between;
+  /* flex-wrap: wrap; */
+  width: 90%;
+  margin-top: 2.5rem;
+}
+
+.dates-bill-to-container {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.InvoiceDetails-dates {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.InvoiceDetails-dates div {
+  display: flex;
+  flex-direction: column;
+}
+
+.InvoiceDetails-client {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1.6rem;
+}
+
+.InvoiceDetails-client-address {
+  display: flex;
+  flex-direction: column;
+}
+
+.InvoiceDetails-client-email {
+  display: flex;
+  flex-direction: column;
+}
+
+.InvoiceDetails-content-bottom-row {
+  background-color: var(--gray-blue-verylight);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 5rem;
+  border-radius: 0.8rem;
+}
+
+.InvoiceDetails-items-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.InvoiceDetails-items-container-mobile {
+  display: none;
+}
+
+.InvoiceDetails-items,
+.InvoiceDetails-item-qty,
+.InvoiceDetails-item-price,
+.InvoiceDetails-item-total {
+  display: flex;
+  flex-direction: column;
+}
+
+.InvoiceDetails-items {
+  width: 40%;
+}
+
+.InvoiceDetails-total {
+  background-color: var(--denim);
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 2rem 4rem;
+  border-bottom-right-radius: 0.8rem;
+  border-bottom-left-radius: 0.8rem;
+}
+
+/* Footer */
+.InvoiceDetails-footer {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .InvoiceDetails {
+    width: 68.8rem;
+    max-width: 68.8rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .InvoiceDetails-content-middle-row {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .dates-bill-to-container {
+    width: 90%;
+    max-width: 90%;
+  }
+
+  .InvoiceDetails-client-email {
+    margin-top: 4rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .InvoiceDetails {
+    padding-bottom: 0;
+  }
+  .hidden {
+    display: none;
+  }
+
+  .InvoiceDetails-status-container {
+    width: 100%;
+  }
+
+  .InvoiceDetails-footer {
+    display: flex;
+    padding: 2rem;
+    margin-top: 6rem;
+  }
+
+  .InvoiceDetails-footer .InvoiceDetails-actions {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .InvoiceDetails-content-middle-row {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 429px) {
+  .InvoiceDetails-content {
+    padding: 2.5rem;
+  }
+
+  .InvoiceDetails-content-top-row {
+    flex-direction: column;
+    margin-bottom: 3rem;
+  }
+
+  .InvoiceDetails-sender-address {
+    align-items: flex-start;
+    margin-top: 3rem;
+  }
+
+  .dates-bill-to-container {
+    width: 100%;
+  }
+
+  .InvoiceDetails-items-container {
+    display: none;
+  }
+
+  .InvoiceDetails-jobs-mobile {
+    padding: 2rem 2rem 0;
+  }
+
+  .InvoiceDetails-items-container-mobile {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .InvoiceDetails-items-mobile {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .dates-bill-to-container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
