@@ -1,0 +1,165 @@
+.Form {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.Form-street-address {
+  display: flex;
+}
+
+.Form-street-address .InputField {
+  width: 100%;
+  max-width: 100%;
+}
+
+.Form-address-parts {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem 2rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.Form-city-postcode {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 2rem;
+}
+
+.Form-to,
+.Form-date-terms,
+.Form-items {
+  margin-top: 4rem;
+}
+
+.Form-date-terms {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Form-date-terms .InputField,
+.Form-date-terms .Form-payment-terms {
+  width: 45%;
+}
+
+.Form-payment-terms {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+/* Item List */
+
+.Form-items {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .Form-items-labels {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+}
+
+.Form-items-labels-rest {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+} */
+
+.Form-items-inputs,
+.Form-items-labels {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+.Form-items-rest,
+.Form-items-labels-rest {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  gap: 0 2rem;
+}
+/* .Form-items-inputs,
+.Form-items-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Form-items-rest,
+.Form-items-labels-rest {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+} */
+
+/* .Form-item-name,
+.Form-items-labels-name {
+  width: 40%;
+}
+
+.Form-item-qty {
+  width: 20%;
+}
+
+.Form-item-price {
+  width: 26%;
+} */
+
+.Form-item-qty input,
+.Form-item-price input {
+  padding-right: 0.5rem;
+}
+
+.Form-items-total-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Form-item-total {
+  height: 4.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Form-item-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Form-control-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5rem;
+  /* width: 24.2rem; */
+  width: 100%;
+}
+
+.Form-new-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.Form-save-buttons {
+  align-self: flex-end;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.Form-edit-buttons {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.Form-control-buttons .btn-violet,
+.Form-control-buttons .btn-draft {
+  width: 13.8rem;
+}

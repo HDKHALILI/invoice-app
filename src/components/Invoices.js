@@ -7,6 +7,7 @@ import iconArrowDown from "../assets/icon-arrow-down.svg";
 
 import "../styles/Invoices.css";
 import InvoiceDetails from "./InvoiceDetails";
+import InvoiceEdit from "./InvoiceEdit";
 
 function filterInvoices(invoices, filters) {
   if (filters.length === 0) return invoices;
@@ -42,7 +43,8 @@ function Invoices() {
     setInvoices(filterInvoices(invoicesData, filters));
   }, [filters, setInvoices]);
 
-  if (true) return <InvoiceDetails invoice={invoices[4]} />;
+  // if (true) return <InvoiceDetails invoice={invoices[4]} />;
+  if (true) return <InvoiceEdit />;
   else {
     return (
       <div className="Invoices">

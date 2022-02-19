@@ -1,0 +1,25 @@
+.InputField {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+.InputField-labels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.InputField-input {
+  border: 2px solid var(--gray-blue-light);
+  border-radius: 0.4rem;
+  padding: 1.4rem 1.5rem;
+  width: 100%;
+  max-width: 100%;
+  /* box-shadow: 0 0px 1px 1px rgba(223, 227, 250); */
+}
+
+.InputField-input:focus,
+.InputField-input:active {
+  border: 2px solid var(--violet-light);
+  outline: none;
+}

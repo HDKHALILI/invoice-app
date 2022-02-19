@@ -83,6 +83,10 @@ code {
   text-align: right;
 }
 
+.text-center {
+  text-align: center;
+}
+
 /* Payment Status */
 .status {
   width: 10.4rem;
@@ -134,12 +138,14 @@ code {
   background-color: var(--violet-light);
 }
 
-.btn-edit {
+.btn-edit,
+.btn-cancel {
   background-color: var(--gray-blue-verylight);
   color: var(--gray);
 }
 
-.btn-edit:hover {
+.btn-edit:hover,
+.btn-cancel:hover {
   background-color: var(--gray-blue-light);
 }
 
@@ -151,11 +157,20 @@ code {
   background-color: var(--red-light);
 }
 
-.text-center {
-  text-align: center;
+.btn-draft {
+  background-color: var(--denim);
+  color: var(--gray-blue);
+}
+
+.btn-draft:hover {
+  background-color: var(--black-900);
 }
 
 /* Spacing */
+.mt-xlarge {
+  margin-top: 3.5rem;
+}
+
 .mt-large {
   margin-top: 2.5rem;
 }
@@ -170,6 +185,10 @@ code {
 
 .mb-large {
   margin-bottom: 2.5rem;
+}
+
+.mb-xxlarge {
+  margin-bottom: 5rem;
 }
 
 .mb-xlarge {
@@ -211,3 +230,6 @@ code {
 @import "./Invoices.css";
 @import "./Invoice.css";
 @import "./InvoiceDetails.css";
+@import "./InvoiceEdit.css";
+@import "./InputField.css";
+@import "./Form.css";
