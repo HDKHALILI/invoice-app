@@ -56,58 +56,19 @@
   flex-direction: column;
 }
 
-/* .Form-items-labels {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-}
-
-.Form-items-labels-rest {
-  display: grid;
-  grid-template-columns: 2fr 3fr 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 3rem;
-} */
-
 .Form-items-inputs,
 .Form-items-labels {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr 3fr;
   gap: 2rem;
 }
 
 .Form-items-rest,
 .Form-items-labels-rest {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr;
+  grid-template-columns: 2fr 4fr 2fr 1fr;
   gap: 0 2rem;
 }
-/* .Form-items-inputs,
-.Form-items-labels {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.Form-items-rest,
-.Form-items-labels-rest {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 60%;
-} */
-
-/* .Form-item-name,
-.Form-items-labels-name {
-  width: 40%;
-}
-
-.Form-item-qty {
-  width: 20%;
-}
-
-.Form-item-price {
-  width: 26%;
-} */
 
 .Form-item-qty input,
 .Form-item-price input {
@@ -129,7 +90,7 @@
 
 .Form-item-delete {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 

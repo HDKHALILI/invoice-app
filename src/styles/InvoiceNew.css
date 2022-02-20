@@ -1,4 +1,4 @@
-.InvoiceEdit {
+.InvoiceNew {
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   max-width: 100%;
@@ -9,14 +9,15 @@
   position: absolute;
   top: 0;
   left: 10.3rem;
+  padding-right: 2rem;
   z-index: 2;
 }
 
-.InvoiceEdit-content {
+.InvoiceNew-content {
   background-color: #fff;
-  /* height: 100vh;
+  height: 100vh;
   max-height: 100vh;
-  overflow: scroll; */
+  overflow: scroll;
   width: 71.9rem;
   max-width: 71.9rem;
   padding: 4rem 4.5rem;

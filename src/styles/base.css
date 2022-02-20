@@ -61,6 +61,10 @@ code {
   color: #fff;
 }
 
+.color-violet {
+  color: var(--violet);
+}
+
 /* Typography */
 .bold {
   font-weight: 700;
@@ -124,9 +128,9 @@ code {
 .btn {
   border: none;
   border-radius: 2.4rem;
-  color: #fff;
   padding: 1.6rem 2rem;
   cursor: pointer;
+  font-weight: 700;
   transition: all 0.3s;
 }
 
@@ -164,6 +168,20 @@ code {
 
 .btn-draft:hover {
   background-color: var(--black-900);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.icon-btn svg {
+  fill: #888eb0;
+  transition: fill 0.3s;
+}
+.icon-btn:hover svg {
+  fill: var(--red);
 }
 
 /* Spacing */
@@ -231,5 +249,6 @@ code {
 @import "./Invoice.css";
 @import "./InvoiceDetails.css";
 @import "./InvoiceEdit.css";
+@import "./InvoiceNew.css";
 @import "./InputField.css";
 @import "./Form.css";
