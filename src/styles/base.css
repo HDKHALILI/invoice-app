@@ -143,13 +143,15 @@ code {
 }
 
 .btn-edit,
-.btn-cancel {
+.btn-cancel,
+.btn-add-item {
   background-color: var(--gray-blue-verylight);
   color: var(--gray);
 }
 
 .btn-edit:hover,
-.btn-cancel:hover {
+.btn-cancel:hover,
+.btn-add-item:hover {
   background-color: var(--gray-blue-light);
 }
 

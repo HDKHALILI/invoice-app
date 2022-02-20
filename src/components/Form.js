@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+import generateId from "../lib/generateId";
+import { toNumber, calcItemTotal } from "../lib/utilities";
+
 import InputField from "./InputField";
 import ItemListInput from "./ItemListInputs";
 import "../styles/Form.css";
@@ -49,7 +52,7 @@ const initialValues = {
 
 const ITEM_DEFAULT = {
   name: "",
-  quantity: "",
+  quantity: 0,
   price: "",
   total: "",
 };
@@ -83,9 +86,10 @@ function Form(props) {
   const handleItemChange = (index, { target }) => {
     let currentItem = { ...values.items[index] };
     const itemsCopy = values.items.slice();
-    currentItem = { ...currentItem, [target.name]: target.value };
-    // currentItem[target.name] = target.value;
+    currentItem[target.name] = toNumber(target);
+    currentItem.total = calcItemTotal(currentItem);
     itemsCopy[index] = currentItem;
+    console.log(target);
     setValues({ ...values, items: itemsCopy });
   };
 
@@ -99,9 +103,19 @@ function Form(props) {
     setValues({ ...values, items: [...values.items, ITEM_DEFAULT] });
   };
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    props.handleSubmit(values);
+    props.closeForm();
+  };
+
+  const handleDraft = () => {
+    props.handleDraft(values);
+    closeForm();
+  };
+
   const {
     createdAt,
-    paymentDue,
     description,
     paymentTerms,
     clientName,
@@ -109,11 +123,10 @@ function Form(props) {
     senderAddress,
     clientAddress,
     items,
-    total,
   } = values;
-
+  const { closeForm } = props;
   return (
-    <form className="Form color-gray-blue">
+    <form className="Form color-gray-blue" onSubmit={handleSubmit}>
       <div className="Form-from">
         <p className="mb-large bold color-violet">Bill From</p>
         <div className="Form-address">
@@ -258,6 +271,7 @@ function Form(props) {
         </div>
         {items.map((item, index) => (
           <ItemListInput
+            key={index}
             index={index}
             name={item.name}
             quantity={item.quantity}
@@ -268,7 +282,7 @@ function Form(props) {
           />
         ))}
         <button
-          className="btn color-gray-blue mt-medium"
+          className="btn btn-add-item color-gray-blue mt-medium"
           type="button"
           onClick={addItem}
         >
@@ -279,12 +293,15 @@ function Form(props) {
         {props.type === "edit" ? (
           <div className="Form-edit-buttons">
             <button
+              type="button"
               className="btn btn-cancel mr-small"
-              onClick={props.handleCancel}
+              onClick={closeForm}
             >
               Cancel
             </button>
-            <button className="btn btn-violet">Save Changes</button>
+            <button type="submit" className="btn btn-violet">
+              Save Changes
+            </button>
           </div>
         ) : (
           <div className="Form-new-buttons">
@@ -292,17 +309,21 @@ function Form(props) {
               <button
                 type="button"
                 className="btn btn-cancel"
-                onClick={props.handleDiscard}
+                onClick={closeForm}
               >
-                {props.type === "edit" ? "Cancel" : "Discard"}
+                Cancel
               </button>
             </div>
             <div className="Form-save-buttons">
-              <button type="button" className="btn btn-draft mr-small">
+              <button
+                type="button"
+                className="btn btn-draft mr-small"
+                onClick={handleDraft}
+              >
                 Save as Draft
               </button>
               <button type="submit" className="btn btn-violet color-white">
-                {props.type === "edit" ? "Save Changes" : "Save & Send"}
+                Save & Send
               </button>
             </div>
           </div>

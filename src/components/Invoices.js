@@ -27,7 +27,7 @@ function Invoices() {
   const [invoices, setInvoices] = useState(invoicesData);
   const [filterStatus, setFilterStatus] = useState("close");
   const [filters, setFilters] = useState([]);
-  const [showNewInvoiceForm, setShowNewInvoiceForm] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   const handleFilterStatus = event => {
     setFilterStatus(filterStatus === "close" ? "open" : "close");
@@ -41,8 +41,24 @@ function Invoices() {
     }
   };
 
-  const handleShowNewInvoiceForm = () => {
-    setShowNewInvoiceForm(!showNewInvoiceForm);
+  const handleShowForm = () => {
+    setShowForm(!showForm);
+  };
+
+  const createInvoice = newInvoice => {
+    setInvoices([...invoices, newInvoice]);
+  };
+
+  const updateInvoice = (invoiceId, newInvoice) => {
+    const updatedInvoices = invoices.map(invoice => {
+      return invoice.id === invoiceId ? newInvoice : invoice;
+    });
+
+    setInvoices(updateInvoice);
+  };
+
+  const deleteInvoice = invoiceId => {
+    setInvoices(invoices.filter(invoice => invoice.id !== invoiceId));
   };
 
   useEffect(() => {
@@ -51,8 +67,8 @@ function Invoices() {
 
   return (
     <div className="Invoices">
-      {showNewInvoiceForm && (
-        <InvoiceNew handleDiscard={handleShowNewInvoiceForm} />
+      {showForm && (
+        <InvoiceNew closeForm={handleShowForm} createInvoice={createInvoice} />
       )}
       <section className="Invoices-header">
         <div className="Invoices-titles">
@@ -118,7 +134,7 @@ function Invoices() {
           </div>
           <button
             className="btn btn-violet Invoices-btn bold color-white"
-            onClick={handleShowNewInvoiceForm}
+            onClick={handleShowForm}
           >
             <img
               src={iconPlus}
