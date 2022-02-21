@@ -11,6 +11,7 @@
   border: none;
   /* transition: all 0.3s; */
   box-shadow: 0 3px 8px 0px rgba(223, 227, 250);
+  border: 2px solid transparent;
 }
 
 .Invoice:hover {

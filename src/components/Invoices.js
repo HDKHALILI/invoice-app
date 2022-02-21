@@ -142,7 +142,7 @@ function Invoices() {
               className="Invoices-icon-plus"
             />
             <p>
-              New <span className="hidden">Invoice</span>
+              New <span className="text-hidden">Invoice</span>
             </p>
           </button>
         </div>

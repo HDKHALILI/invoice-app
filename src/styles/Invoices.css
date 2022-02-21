@@ -1,6 +1,7 @@
 .Invoices {
   width: 77rem;
   max-width: 77rem;
+  padding: 0 2rem;
 }
 
 .Invoices-header {
@@ -27,7 +28,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.85rem 2rem;
-  padding-left: 1rem;
+  padding-left: 0.8rem;
   width: 15rem;
   margin-left: 2rem;
   transition: background-color 0.3s;
@@ -126,6 +127,9 @@
 }
 
 @media screen and (max-width: 520px) {
+  .text-hidden {
+    display: none;
+  }
   .Invoices-titles h1 {
     font-size: 2rem;
   }
