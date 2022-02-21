@@ -1,5 +1,4 @@
 import InputField from "./InputField";
-import iconDelete from "../assets/icon-delete.svg";
 
 function ItemListInput({
   index,
@@ -9,6 +8,7 @@ function ItemListInput({
   total,
   onChange,
   deleteItem,
+  errors,
 }) {
   const handleDelete = event => {
     event.preventDefault();
@@ -26,6 +26,8 @@ function ItemListInput({
           name="name"
           value={name}
           onChange={handleChange}
+          error={errors.name}
+          hideMessage={true}
         />
       </div>
       <div className="Form-items-rest">
@@ -35,6 +37,8 @@ function ItemListInput({
             name="quantity"
             value={quantity}
             onChange={handleChange}
+            error={errors.quantity}
+            hideMessage={true}
           />
         </div>
         <div className="Form-item-price">
@@ -43,6 +47,8 @@ function ItemListInput({
             name="price"
             value={price}
             onChange={handleChange}
+            error={errors.price}
+            hideMessage={true}
           />
         </div>
         <div className="Form-items-total-container">

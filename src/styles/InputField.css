@@ -23,3 +23,15 @@
   border: 2px solid var(--violet-light);
   outline: none;
 }
+
+.InputField-input:invalid[focused="true"] {
+  border-color: var(--red);
+}
+
+.invalid {
+  border-color: var(--red);
+}
+
+.error {
+  color: var(--red);
+}

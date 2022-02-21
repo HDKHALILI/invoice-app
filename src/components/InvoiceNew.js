@@ -5,14 +5,11 @@ import Form from "./Form";
 import "../styles/InvoiceNew.css";
 
 const INITIAL_VALUE = {
-  id: "",
   createdAt: "",
-  paymentDue: "",
   description: "",
   paymentTerms: "",
   clientName: "",
   clientEmail: "",
-  status: "",
   senderAddress: {
     street: "",
     city: "",
@@ -26,7 +23,6 @@ const INITIAL_VALUE = {
     country: "",
   },
   items: [],
-  total: 0,
 };
 
 function InvoiceNew(props) {

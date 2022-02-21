@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import generateId from "../lib/generateId";
 import { toNumber, calcItemTotal } from "../lib/utilities";
+import validate from "../lib/validations";
 
 import InputField from "./InputField";
 import ItemListInput from "./ItemListInputs";
@@ -52,17 +53,26 @@ const initialValues = {
 
 const ITEM_DEFAULT = {
   name: "",
-  quantity: 0,
+  quantity: "",
   price: "",
   total: "",
 };
 function Form(props) {
   const [values, setValues] = useState(props.initialValues);
+  const [errors, setErrors] = useState({ ...props.initialValues, valid: true });
 
   const handleChange = ({ target }) => {
     setValues({ ...values, [target.name]: target.value });
   };
 
+  useEffect(() => {
+    if (!errors.valid) {
+      setErrors(validate(values));
+    }
+  }, [values]);
+
+  console.log("errors", errors);
+  console.log(values);
   const handleSenderAddressChange = ({ target }) => {
     setValues({
       ...values,
@@ -89,7 +99,6 @@ function Form(props) {
     currentItem[target.name] = toNumber(target);
     currentItem.total = calcItemTotal(currentItem);
     itemsCopy[index] = currentItem;
-    console.log(target);
     setValues({ ...values, items: itemsCopy });
   };
 
@@ -101,10 +110,19 @@ function Form(props) {
 
   const addItem = () => {
     setValues({ ...values, items: [...values.items, ITEM_DEFAULT] });
+    setErrors({ ...errors, items: [...errors.items, ITEM_DEFAULT] });
   };
 
   const handleSubmit = event => {
     event.preventDefault();
+    const newErrors = validate(values);
+    console.log("new error", newErrors);
+    if (!newErrors.valid) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
     props.handleSubmit(values);
     props.closeForm();
   };
@@ -137,6 +155,7 @@ function Form(props) {
               value={senderAddress.street}
               label="Street Address"
               onChange={handleSenderAddressChange}
+              error={errors.senderAddress.street}
             />
           </div>
           <div className="Form-address-parts">
@@ -147,6 +166,7 @@ function Form(props) {
                 value={senderAddress.city}
                 label="City"
                 onChange={handleSenderAddressChange}
+                error={errors.senderAddress.city}
               />
               <InputField
                 type="text"
@@ -154,6 +174,7 @@ function Form(props) {
                 value={senderAddress.postCode}
                 label="Post Code"
                 onChange={handleSenderAddressChange}
+                error={errors.senderAddress.postCode}
               />
             </div>
             <div className="Form-country">
@@ -163,6 +184,7 @@ function Form(props) {
                 value={senderAddress.country}
                 label="Country"
                 onChange={handleSenderAddressChange}
+                error={errors.senderAddress.country}
               />
             </div>
           </div>
@@ -177,6 +199,7 @@ function Form(props) {
             value={clientName}
             label="Client's Name"
             onChange={handleChange}
+            error={errors.clientName}
           />
         </div>
         <div className="mt-large">
@@ -186,6 +209,7 @@ function Form(props) {
             value={clientEmail}
             label="Client's Email"
             onChange={handleChange}
+            error={errors.clientEmail}
           />
         </div>
         <div className="Form-address mt-large">
@@ -196,6 +220,7 @@ function Form(props) {
               value={clientAddress.street}
               label="Street Address"
               onChange={handleClientAddressChange}
+              error={errors.clientAddress.street}
             />
           </div>
           <div className="Form-address-parts">
@@ -206,6 +231,7 @@ function Form(props) {
                 value={clientAddress.city}
                 label="City"
                 onChange={handleClientAddressChange}
+                error={errors.clientAddress.city}
               />
               <InputField
                 type="text"
@@ -213,6 +239,7 @@ function Form(props) {
                 value={clientAddress.postCode}
                 label="Post Code"
                 onChange={handleClientAddressChange}
+                error={errors.clientAddress.postCode}
               />
             </div>
             <div className="Form-country">
@@ -222,6 +249,7 @@ function Form(props) {
                 value={clientAddress.country}
                 label="Country"
                 onChange={handleClientAddressChange}
+                error={errors.clientAddress.country}
               />
             </div>
           </div>
@@ -234,6 +262,7 @@ function Form(props) {
           value={createdAt}
           label="Invoice Date"
           onChange={handleChange}
+          error={errors.createdAt}
         />
         <fieldset className="Form-payment-terms">
           <label className="mb-small">Payment Terms</label>
@@ -241,6 +270,7 @@ function Form(props) {
             name="paymentTerms"
             value={paymentTerms}
             onChange={handleChange}
+            className={errors.paymentTerms && "invalid"}
           >
             <option value="1">Net 1 Day</option>
             <option value="7">Net 7 Days</option>
@@ -256,6 +286,7 @@ function Form(props) {
           value={description}
           label="Project Description"
           onChange={handleChange}
+          error={errors.description}
         />
       </div>
       <div className="Form-items">
@@ -279,6 +310,7 @@ function Form(props) {
             total={item.total}
             deleteItem={deleteItem}
             onChange={handleItemChange}
+            errors={errors.items[index]}
           />
         ))}
         <button

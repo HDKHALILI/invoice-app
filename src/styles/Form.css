@@ -124,3 +124,7 @@
 .Form-control-buttons .btn-draft {
   width: 13.8rem;
 }
+
+.invalid {
+  border-color: var(--red);
+}

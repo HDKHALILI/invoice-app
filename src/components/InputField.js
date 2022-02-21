@@ -1,19 +1,21 @@
+import { useState } from "react";
 import "../styles/InputField.css";
 
 function InputField(props) {
-  const { type, value, name, label, onChange } = props;
+  const { type, value, name, label, error, hideMessage, onChange } = props;
+  const showError = error && !hideMessage;
   return (
-    <fieldset className="InputField">
+    <fieldset className={`InputField ${error && "error"}`}>
       <div className="InputField-labels mb-small">
         <label>{label}</label>
-        {/* <span className="color-red hidden">error message</span> */}
+        {showError && <span className="color-red hidden">{error}</span>}
       </div>
       <input
         type={type}
         value={value}
         name={name}
         onChange={onChange}
-        className="InputField-input bold"
+        className={`InputField-input bold ${error && "invalid"}`}
       />
     </fieldset>
   );
