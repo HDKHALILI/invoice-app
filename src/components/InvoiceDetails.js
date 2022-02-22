@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 import InvoiceEdit from "./InvoiceEdit";
 import iconArrowLeft from "../assets/icon-arrow-left.svg";
@@ -8,6 +8,7 @@ import { useState } from "react";
 function InvoiceDetails(props) {
   const [showEdit, setShowEdit] = useState(false);
   const params = useParams();
+  const navigate = useNavigate();
 
   const invoice = props.invoices.find(
     invoice => invoice.id === params.invoice_id
@@ -23,6 +24,7 @@ function InvoiceDetails(props) {
 
   const handleDelete = () => {
     props.deleteInvoice(invoice.id);
+    navigate("/");
   };
 
   const {
@@ -65,7 +67,9 @@ function InvoiceDetails(props) {
             <button className="btn btn-edit" onClick={handleShowEdit}>
               Edit
             </button>
-            <button className="btn btn-delete">Delete</button>
+            <button className="btn btn-delete" onClick={handleDelete}>
+              Delete
+            </button>
             <button
               className="btn btn-violet"
               disabled={status === "paid" || status === "draft"}
