@@ -67,6 +67,7 @@ function Form(props) {
 
   useEffect(() => {
     if (!errors.valid) {
+      console.log("error triggered");
       setErrors(validate(values));
     }
   }, [values]);
@@ -130,6 +131,7 @@ function Form(props) {
     closeForm();
   };
 
+  console.log("errors object", errors);
   const {
     createdAt,
     description,

@@ -1,12 +1,14 @@
+import { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
 import InvoiceEdit from "./InvoiceEdit";
+import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import iconArrowLeft from "../assets/icon-arrow-left.svg";
 import "../styles/InvoiceDetails.css";
-import { useState } from "react";
 
 function InvoiceDetails(props) {
   const [showEdit, setShowEdit] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const params = useParams();
   const navigate = useNavigate();
 
@@ -25,6 +27,10 @@ function InvoiceDetails(props) {
   const handleDelete = () => {
     props.deleteInvoice(invoice.id);
     navigate("/");
+  };
+
+  const handleConfirmDelete = () => {
+    setConfirmDelete(!confirmDelete);
   };
 
   const {
@@ -50,6 +56,13 @@ function InvoiceDetails(props) {
           invoice={invoice}
         />
       )}
+      {confirmDelete && (
+        <ConfirmDeleteModal
+          id={id}
+          cancelDelete={handleConfirmDelete}
+          deleteInvoice={handleDelete}
+        />
+      )}
       <div className="InvoiceDetails-main">
         <Link to="/" className="go-back">
           <img src={iconArrowLeft} alt="left arrow" className="mr-medium" />
@@ -67,7 +80,7 @@ function InvoiceDetails(props) {
             <button className="btn btn-edit" onClick={handleShowEdit}>
               Edit
             </button>
-            <button className="btn btn-delete" onClick={handleDelete}>
+            <button className="btn btn-delete" onClick={handleConfirmDelete}>
               Delete
             </button>
             <button

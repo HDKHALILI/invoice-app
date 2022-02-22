@@ -1,0 +1,32 @@
+.ConfirmDeleteModal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ConfirmDeleteModal-body {
+  background-color: #fff;
+  width: 52rem;
+  max-width: 52rem;
+  display: flex;
+  flex-direction: column;
+  padding: 4.5rem;
+  border-radius: 0.8rem;
+}
+
+.ConfirmDeleteModal-body p {
+  margin: 2.2rem 0;
+  line-height: 2;
+}
+
+.ConfirmDeleteModal-buttons {
+  display: flex;
+  justify-content: flex-end;
+}

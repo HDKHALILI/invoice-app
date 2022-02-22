@@ -71,6 +71,8 @@ function validate(invoice) {
       }
     }
   }
+
+  console.log(valid);
   return { ...errors, valid };
 }
 
