@@ -25,6 +25,16 @@ function App() {
     setInvoices(invoices.filter(invoice => invoice.id !== invoiceId));
   };
 
+  const markAsPaid = invoiceId => {
+    const updatedInvoices = invoices.map(invoice => {
+      if (invoice.id === invoiceId) {
+        return { ...invoice, status: "paid" };
+      }
+      return invoice;
+    });
+    setInvoices(updatedInvoices);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -40,7 +50,13 @@ function App() {
           />
           <Route
             path="/details/:invoice_id"
-            element={<InvoiceDetails invoices={invoices} />}
+            element={
+              <InvoiceDetails
+                invoices={invoices}
+                deleteInvoice={deleteInvoice}
+                markAsPaid={markAsPaid}
+              />
+            }
           />
         </Routes>
       </main>

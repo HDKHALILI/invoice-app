@@ -140,6 +140,11 @@ a {
   transition: all 0.3s;
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .btn-violet {
   background-color: var(--violet);
 }

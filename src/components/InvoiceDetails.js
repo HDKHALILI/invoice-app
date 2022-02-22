@@ -1,4 +1,6 @@
 import { useParams, Link } from "react-router-dom";
+
+import InvoiceEdit from "./InvoiceEdit";
 import iconArrowLeft from "../assets/icon-arrow-left.svg";
 import "../styles/InvoiceDetails.css";
 
@@ -7,6 +9,15 @@ function InvoiceDetails(props) {
   const invoice = props.invoices.find(
     invoice => invoice.id === params.invoice_id
   );
+
+  const handleMarkAsPaid = () => {
+    props.markAsPaid(invoice.id);
+  };
+
+  const handleDelete = () => {
+    props.deleteInvoice(invoice.id);
+  };
+
   const {
     id,
     createdAt,
@@ -20,6 +31,7 @@ function InvoiceDetails(props) {
     items,
     total,
   } = invoice;
+
   return (
     <div className="InvoiceDetails">
       <div className="InvoiceDetails-main">
@@ -38,7 +50,13 @@ function InvoiceDetails(props) {
           <div className="InvoiceDetails-actions hidden">
             <button className="btn btn-edit">Edit</button>
             <button className="btn btn-delete">Delete</button>
-            <button className="btn btn-violet">Mark as Paid</button>
+            <button
+              className="btn btn-violet"
+              disabled={status === "paid" || status === "draft"}
+              onClick={handleMarkAsPaid}
+            >
+              Mark as Paid
+            </button>
           </div>
         </header>
         <section className="InvoiceDetails-content color-gray-blue">
@@ -172,7 +190,13 @@ function InvoiceDetails(props) {
         <div className="InvoiceDetails-actions">
           <button className="btn btn-edit">Edit</button>
           <button className="btn btn-delete">Delete</button>
-          <button className="btn btn-violet">Mark as Paid</button>
+          <button
+            className="btn btn-violet"
+            disabled={status === "paid" || status === "draft"}
+            onClick={handleMarkAsPaid}
+          >
+            Mark as Paid
+          </button>
         </div>
       </footer>
     </div>
