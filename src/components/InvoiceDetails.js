@@ -3,12 +3,19 @@ import { useParams, Link } from "react-router-dom";
 import InvoiceEdit from "./InvoiceEdit";
 import iconArrowLeft from "../assets/icon-arrow-left.svg";
 import "../styles/InvoiceDetails.css";
+import { useState } from "react";
 
 function InvoiceDetails(props) {
+  const [showEdit, setShowEdit] = useState(false);
   const params = useParams();
+
   const invoice = props.invoices.find(
     invoice => invoice.id === params.invoice_id
   );
+
+  const handleShowEdit = () => {
+    setShowEdit(!showEdit);
+  };
 
   const handleMarkAsPaid = () => {
     props.markAsPaid(invoice.id);
@@ -34,6 +41,13 @@ function InvoiceDetails(props) {
 
   return (
     <div className="InvoiceDetails">
+      {showEdit && (
+        <InvoiceEdit
+          closeForm={handleShowEdit}
+          updateInvoice={props.updateInvoice}
+          invoice={invoice}
+        />
+      )}
       <div className="InvoiceDetails-main">
         <Link to="/" className="go-back">
           <img src={iconArrowLeft} alt="left arrow" className="mr-medium" />
@@ -48,7 +62,9 @@ function InvoiceDetails(props) {
             </span>
           </div>
           <div className="InvoiceDetails-actions hidden">
-            <button className="btn btn-edit">Edit</button>
+            <button className="btn btn-edit" onClick={handleShowEdit}>
+              Edit
+            </button>
             <button className="btn btn-delete">Delete</button>
             <button
               className="btn btn-violet"

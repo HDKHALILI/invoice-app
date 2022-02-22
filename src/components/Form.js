@@ -71,8 +71,6 @@ function Form(props) {
     }
   }, [values]);
 
-  console.log("errors", errors);
-  console.log(values);
   const handleSenderAddressChange = ({ target }) => {
     setValues({
       ...values,

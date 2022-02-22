@@ -14,9 +14,9 @@
 
 .InvoiceEdit-content {
   background-color: #fff;
-  /* height: 100vh;
+  height: 100vh;
   max-height: 100vh;
-  overflow: scroll; */
+  overflow: scroll;
   width: 71.9rem;
   max-width: 71.9rem;
   padding: 4rem 4.5rem;

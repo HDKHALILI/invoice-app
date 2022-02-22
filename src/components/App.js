@@ -18,7 +18,7 @@ function App() {
       return invoice.id === invoiceId ? newInvoice : invoice;
     });
 
-    setInvoices(updateInvoice);
+    setInvoices(updatedInvoices);
   };
 
   const deleteInvoice = invoiceId => {
@@ -55,6 +55,7 @@ function App() {
                 invoices={invoices}
                 deleteInvoice={deleteInvoice}
                 markAsPaid={markAsPaid}
+                updateInvoice={updateInvoice}
               />
             }
           />

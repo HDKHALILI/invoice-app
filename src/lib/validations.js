@@ -61,11 +61,14 @@ function validate(invoice) {
           validFields = newErrors.valid;
         });
         valid = validFields;
+        console.log("items valid", valid);
       }
     } else {
       const value = invoice[key];
-      if (!value) errors[key] = "Can't be empty";
-      valid = false;
+      if (!value) {
+        errors[key] = "Can't be empty";
+        valid = false;
+      }
     }
   }
   return { ...errors, valid };
