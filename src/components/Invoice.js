@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import iconArrowRight from "../assets/icon-arrow-right.svg";
 import "../styles/Invoice.css";
 
 function Invoice(props) {
   const { id, paymentDue, clientName, total, status } = props;
   return (
-    <a href="/" className="Invoice">
+    <Link to={`details/${id}`} href="/" className="Invoice">
       <div className="Invoice-basic-info color-gray-blue">
         <div className="Invoice-id-duedate">
           <div className="Invoice-id">
@@ -27,7 +28,7 @@ function Invoice(props) {
           <img src={iconArrowRight} alt="arrow right" />
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 

@@ -1,7 +1,12 @@
+import { useParams, Link } from "react-router-dom";
 import iconArrowLeft from "../assets/icon-arrow-left.svg";
 import "../styles/InvoiceDetails.css";
 
 function InvoiceDetails(props) {
+  const params = useParams();
+  const invoice = props.invoices.find(
+    invoice => invoice.id === params.invoice_id
+  );
   const {
     id,
     createdAt,
@@ -14,14 +19,14 @@ function InvoiceDetails(props) {
     clientAddress,
     items,
     total,
-  } = props.invoice;
+  } = invoice;
   return (
     <div className="InvoiceDetails">
       <div className="InvoiceDetails-main">
-        <div className="go-back">
+        <Link to="/" className="go-back">
           <img src={iconArrowLeft} alt="left arrow" className="mr-medium" />
           <span className="bold">Go back</span>
-        </div>
+        </Link>
         <header className="InvoiceDetails-header">
           <div className="InvoiceDetails-status-container">
             <span>Status</span>
@@ -93,7 +98,10 @@ function InvoiceDetails(props) {
               <div className="InvoiceDetails-items">
                 <span className="mb-xlarge">Item Name</span>
                 {items.map(item => (
-                  <span className="bold mb-xlarge color-black-900">
+                  <span
+                    key={item.name}
+                    className="bold mb-xlarge color-black-900"
+                  >
                     {item.name}
                   </span>
                 ))}
@@ -101,19 +109,29 @@ function InvoiceDetails(props) {
               <div className="InvoiceDetails-item-qty text-right">
                 <span className="mb-xlarge">Qty</span>
                 {items.map(item => (
-                  <span className="mb-xlarge">{item.quantity}</span>
+                  <span
+                    key={`${item.name}${item.quantity}`}
+                    className="mb-xlarge"
+                  >
+                    {item.quantity}
+                  </span>
                 ))}
               </div>
               <div className="InvoiceDetails-item-price text-right">
                 <span className="mb-xlarge">Price</span>
                 {items.map(item => (
-                  <span className="mb-xlarge">&pound;{item.price}</span>
+                  <span key={item.price} className="mb-xlarge">
+                    &pound;{item.price}
+                  </span>
                 ))}
               </div>
               <div className="InvoiceDetails-item-total text-right">
                 <span className="mb-xlarge">Total</span>
                 {items.map(item => (
-                  <span className="bold color-black-900 mb-xlarge">
+                  <span
+                    key={item.total}
+                    className="bold color-black-900 mb-xlarge"
+                  >
                     &pound;{item.total}
                   </span>
                 ))}
@@ -121,7 +139,10 @@ function InvoiceDetails(props) {
             </div>
             <div className="InvoiceDetails-jobs-mobile">
               {items.map(item => (
-                <div className="InvoiceDetails-items-container-mobile">
+                <div
+                  className="InvoiceDetails-items-container-mobile"
+                  key={item.name}
+                >
                   <div className="InvoiceDetails-items-mobile mb-xlarge">
                     <span className="bold mb-xsmall color-black-900">
                       {item.name}

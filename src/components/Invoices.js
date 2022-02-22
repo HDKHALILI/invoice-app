@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
 
 import Invoice from "./Invoice";
-import invoicesData from "../data.json";
 import iconPlus from "../assets/icon-plus.svg";
 import iconArrowDown from "../assets/icon-arrow-down.svg";
 
 import "../styles/Invoices.css";
-import InvoiceDetails from "./InvoiceDetails";
-import InvoiceEdit from "./InvoiceEdit";
 import InvoiceNew from "./InvoiceNew";
 
 function filterInvoices(invoices, filters) {
@@ -23,8 +20,7 @@ function filterInvoices(invoices, filters) {
   return filtered;
 }
 
-function Invoices() {
-  const [invoices, setInvoices] = useState(invoicesData);
+function Invoices(props) {
   const [filterStatus, setFilterStatus] = useState("close");
   const [filters, setFilters] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -33,7 +29,7 @@ function Invoices() {
     setFilterStatus(filterStatus === "close" ? "open" : "close");
   };
 
-  const handleChange = event => {
+  const handleFilterChange = event => {
     if (event.target.checked) {
       setFilters([...filters, event.target.value]);
     } else {
@@ -45,30 +41,15 @@ function Invoices() {
     setShowForm(!showForm);
   };
 
-  const createInvoice = newInvoice => {
-    setInvoices([...invoices, newInvoice]);
-  };
-
-  const updateInvoice = (invoiceId, newInvoice) => {
-    const updatedInvoices = invoices.map(invoice => {
-      return invoice.id === invoiceId ? newInvoice : invoice;
-    });
-
-    setInvoices(updateInvoice);
-  };
-
-  const deleteInvoice = invoiceId => {
-    setInvoices(invoices.filter(invoice => invoice.id !== invoiceId));
-  };
-
-  useEffect(() => {
-    setInvoices(filterInvoices(invoicesData, filters));
-  }, [filters, setInvoices]);
+  const filteredInvoices = filterInvoices(props.invoices, filters);
 
   return (
     <div className="Invoices">
       {showForm && (
-        <InvoiceNew closeForm={handleShowForm} createInvoice={createInvoice} />
+        <InvoiceNew
+          closeForm={handleShowForm}
+          createInvoice={props.createInvoice}
+        />
       )}
       <section className="Invoices-header">
         <div className="Invoices-titles">
@@ -99,7 +80,7 @@ function Invoices() {
                     id="paid"
                     value="paid"
                     className="checkbox"
-                    onChange={handleChange}
+                    onChange={handleFilterChange}
                   />
                   <label htmlFor="paid" className="bold">
                     Paid
@@ -111,7 +92,7 @@ function Invoices() {
                     id="pending"
                     value="pending"
                     className="checkbox"
-                    onChange={handleChange}
+                    onChange={handleFilterChange}
                   />
                   <label htmlFor="pending" className="bold">
                     Pending
@@ -123,7 +104,7 @@ function Invoices() {
                     id="draft"
                     value="draft"
                     className="checkbox"
-                    onChange={handleChange}
+                    onChange={handleFilterChange}
                   />
                   <label htmlFor="draft" className="bold">
                     Draft
@@ -148,7 +129,7 @@ function Invoices() {
         </div>
       </section>
       <section className="Invoices-lists">
-        {invoices.map(invoice => (
+        {filteredInvoices.map(invoice => (
           <Invoice
             key={invoice.id}
             id={invoice.id}
