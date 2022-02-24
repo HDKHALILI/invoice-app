@@ -265,18 +265,24 @@ function Form(props) {
           error={errors.createdAt}
         />
         <fieldset className="Form-payment-terms">
-          <label className="mb-small">Payment Terms</label>
-          <select
-            name="paymentTerms"
-            value={paymentTerms}
-            onChange={handleChange}
-            className={errors.paymentTerms && "invalid"}
-          >
-            <option value="1">Net 1 Day</option>
-            <option value="7">Net 7 Days</option>
-            <option value="14">Net 14 Days</option>
-            <option value="30">Net 30 Days</option>
-          </select>
+          <label className="mb-small" htmlFor="form-select">
+            Payment Terms
+          </label>
+          <div className="Form-select bold">
+            <select
+              name="paymentTerms"
+              id="form-select"
+              value={paymentTerms}
+              onChange={handleChange}
+              className={errors.paymentTerms && "invalid"}
+            >
+              <option value="1">Net 1 Day</option>
+              <option value="7">Net 7 Days</option>
+              <option value="14">Net 14 Days</option>
+              <option value="30">Net 30 Days</option>
+            </select>
+            <span className="focus"></span>
+          </div>
         </fieldset>
       </div>
       <div className="mt-large">
