@@ -8,8 +8,7 @@
   border-bottom-right-radius: 2rem;
   width: 10.3rem;
   /* padding-bottom: 2rem; */
-  position: relative;
-  z-index: 30;
+  /* position: relative; */
 }
 
 .Nav-actions {
@@ -63,9 +62,10 @@
     padding-bottom: 0;
     border-radius: 0;
     /* padding-right: 2rem; */
-    /* position: absolute;
+    position: fixed;
     top: 0;
-    left: 0; */
+    left: 0;
+    z-index: 30;
   }
 
   .Nav-actions {

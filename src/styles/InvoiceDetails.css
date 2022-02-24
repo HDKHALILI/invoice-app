@@ -157,6 +157,11 @@
   width: 14.9rem;
 }
 
+@media screen and (max-width: 890px) {
+  .InvoiceDetails-main {
+    padding-top: 6rem;
+  }
+}
 @media screen and (max-width: 768px) {
   .InvoiceDetails {
     width: 68.8rem;

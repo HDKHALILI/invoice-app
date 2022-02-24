@@ -22,7 +22,10 @@ function InvoiceEdit(props) {
             <span className="bold">Go back</span>
           </div>
         </div>
-        <h1 className="bold font-size-xlarge mb-xxlarge">Edit</h1>
+        <h1 className="bold font-size-xlarge mb-xxlarge">
+          Edit <span className="color-gray-blue">#</span>
+          {props.invoice.id}
+        </h1>
         <Form
           type="edit"
           closeForm={props.closeForm}

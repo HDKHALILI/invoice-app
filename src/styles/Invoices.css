@@ -126,6 +126,12 @@
   transform: rotate(0deg);
 }
 
+@media screen and (max-width: 890px) {
+  .Invoices {
+    margin-top: 5.3rem;
+  }
+}
+
 @media screen and (max-width: 520px) {
   .text-hidden {
     display: none;

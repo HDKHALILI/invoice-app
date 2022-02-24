@@ -5,7 +5,8 @@
   height: 100vh;
   max-height: 100vh;
   display: flex;
-  position: absolute;
+  position: fixed;
+  /* position: absolute; */
   top: 0;
   left: 10.3rem;
   z-index: 2;
@@ -29,7 +30,7 @@
   }
 
   .InvoiceEdit-content {
-    padding-top: 12rem;
+    padding-top: 13.3rem;
   }
 }
 
@@ -42,6 +43,6 @@
 @media screen and (max-width: 500px) {
   .InvoiceEdit-content {
     padding: 3rem 2rem;
-    padding-top: 12rem;
+    padding-top: 11rem;
   }
 }

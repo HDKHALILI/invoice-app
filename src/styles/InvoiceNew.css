@@ -33,7 +33,7 @@
   }
 
   .InvoiceNew-content {
-    padding-top: 12rem;
+    padding-top: 13.3rem;
   }
 }
 
@@ -46,7 +46,7 @@
 @media screen and (max-width: 500px) {
   .InvoiceNew-content {
     padding: 3rem 2rem;
-    padding-top: 12rem;
+    padding-top: 11rem;
   }
 
   .hide-go-back {

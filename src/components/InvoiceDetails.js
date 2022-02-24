@@ -70,7 +70,7 @@ function InvoiceDetails(props) {
         </Link>
         <header className="InvoiceDetails-header">
           <div className="InvoiceDetails-status-container">
-            <span>Status</span>
+            <span className="color-gray-blue">Status</span>
             <span className={`status bold bg-${status} color-${status}`}>
               <span>&#9679;</span>
               {status}
