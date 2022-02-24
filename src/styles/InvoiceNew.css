@@ -1,24 +1,55 @@
 .InvoiceNew {
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
-  max-width: 100%;
-  height: 100%;
-  max-height: 100%;
+  height: 100vh;
+  max-height: 100vh;
   display: flex;
-  padding-right: 2rem;
+  flex-wrap: wrap;
   position: absolute;
   top: 0;
   left: 10.3rem;
-  padding-right: 2rem;
-  z-index: 2;
+  z-index: 3;
 }
 
 .InvoiceNew-content {
   background-color: #fff;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100%;
+  max-height: 100%;
   overflow: scroll;
-  width: 71.9rem;
-  max-width: 71.9rem;
+  width: 61.9rem;
+  max-width: 61.9rem;
   padding: 4rem 4.5rem;
+  overscroll-behavior: contain;
+}
+
+.hide-go-back {
+  display: none;
+}
+
+@media screen and (max-width: 890px) {
+  .InvoiceNew {
+    top: 0;
+    left: 0;
+  }
+
+  .InvoiceNew-content {
+    padding-top: 12rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .InvoiceNew {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .InvoiceNew-content {
+    padding: 3rem 2rem;
+    padding-top: 12rem;
+  }
+
+  .hide-go-back {
+    display: inline-block;
+  }
 }

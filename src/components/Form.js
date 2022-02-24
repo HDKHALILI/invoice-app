@@ -290,16 +290,18 @@ function Form(props) {
         />
       </div>
       <div className="Form-items">
-        <p className="bold font-size-medium mb-large">Item List</p>
-        <div className="Form-items-labels">
-          <div className="Form-items-labels-name">Item Name</div>
-          <div className="Form-items-labels-rest">
-            <span>Qty</span>
-            <span>Price</span>
-            <span className="text-center">Total</span>
-            <span> </span>
+        <p className="bold font-size-medium mb-xlarge">Item List</p>
+        {!items.length && (
+          <div className="Form-items-labels">
+            <div className="Form-items-labels-name">Item Name</div>
+            <div className="Form-items-labels-rest">
+              <span>Qty</span>
+              <span>Price</span>
+              <span className="text-center">Total</span>
+              <span> </span>
+            </div>
           </div>
-        </div>
+        )}
         {items.map((item, index) => (
           <ItemListInput
             key={index}

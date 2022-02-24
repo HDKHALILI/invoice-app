@@ -77,6 +77,7 @@
 
 .Form-items-total-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -86,12 +87,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .Form-item-delete {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+.Form-item-delete .icon-btn {
+  margin-top: 2.5rem;
 }
 
 .Form-control-buttons {
@@ -127,4 +133,35 @@
 
 .invalid {
   border-color: var(--red);
+}
+
+@media screen and (max-width: 620px) {
+  .Form-address-parts {
+    grid-template-columns: 1fr;
+  }
+
+  .Form-items-inputs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Form-date-terms {
+    flex-direction: column;
+  }
+
+  .Form-date-terms .InputField,
+  .Form-date-terms .Form-payment-terms {
+    width: 100%;
+  }
+
+  .Form-payment-terms {
+    margin-top: 2.5rem;
+  }
+
+  .Form-control-buttons .btn-violet,
+  .Form-control-buttons .btn-draft {
+    width: auto;
+    padding: 1.5rem 1rem;
+  }
 }

@@ -19,12 +19,13 @@ function ItemListInput({
     onChange(index, event);
   };
   return (
-    <div className="Form-items-inputs">
+    <div className="Form-items-inputs mb-xlarge">
       <div className="Form-items-name">
         <InputField
           type="text"
           name="name"
           value={name}
+          label="Name"
           onChange={handleChange}
           error={errors.name}
           hideMessage={true}
@@ -35,6 +36,7 @@ function ItemListInput({
           <InputField
             type="number"
             name="quantity"
+            label="Qty"
             value={quantity}
             onChange={handleChange}
             error={errors.quantity}
@@ -45,6 +47,7 @@ function ItemListInput({
           <InputField
             type="number"
             name="price"
+            label="Price"
             value={price}
             onChange={handleChange}
             error={errors.price}
@@ -52,7 +55,8 @@ function ItemListInput({
           />
         </div>
         <div className="Form-items-total-container">
-          <span className="Form-item-total">{total}</span>
+          <span>Total</span>
+          <span className="Form-item-total">{total || 0}</span>
         </div>
         <div className="Form-item-delete">
           <button type="button" onClick={handleDelete} className="icon-btn">

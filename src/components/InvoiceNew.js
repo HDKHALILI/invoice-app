@@ -1,7 +1,8 @@
 import getId from "../lib/generateId";
 import { calcInvoiceTotal, calcPaymentDue } from "../lib/utilities";
-import Form from "./Form";
 
+import Form from "./Form";
+import iconArrowLeft from "../assets/icon-arrow-left.svg";
 import "../styles/InvoiceNew.css";
 
 const INITIAL_VALUE = {
@@ -52,6 +53,12 @@ function InvoiceNew(props) {
   return (
     <div className="InvoiceNew">
       <div className="InvoiceNew-content">
+        <div className="mb-large hide-go-back">
+          <div className="go-back" onClick={props.closeForm}>
+            <img src={iconArrowLeft} alt="left arrow" className="mr-medium" />
+            <span className="bold">Go back</span>
+          </div>
+        </div>
         <h1 className="bold font-size-xlarge mb-xxlarge">New Invoice</h1>
         <Form
           type="new"
