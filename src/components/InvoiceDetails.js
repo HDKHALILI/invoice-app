@@ -221,8 +221,12 @@ function InvoiceDetails(props) {
       </div>
       <footer className="InvoiceDetails-footer">
         <div className="InvoiceDetails-actions">
-          <button className="btn btn-edit">Edit</button>
-          <button className="btn btn-delete">Delete</button>
+          <button className="btn btn-edit" onClick={handleShowEdit}>
+            Edit
+          </button>
+          <button className="btn btn-delete" onClick={handleConfirmDelete}>
+            Delete
+          </button>
           <button
             className="btn btn-violet"
             disabled={status === "paid" || status === "draft"}
