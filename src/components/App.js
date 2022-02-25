@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Nav from "./Nav";
 import Invoices from "./Invoices";
@@ -7,7 +7,9 @@ import invoicesData from "../data.json";
 import "../styles/App.css";
 
 function App() {
-  const [invoices, setInvoices] = useState(invoicesData);
+  const [invoices, setInvoices] = useState(
+    JSON.parse(localStorage.getItem("invoices")) || invoicesData
+  );
 
   const createInvoice = newInvoice => {
     setInvoices([...invoices, newInvoice]);
@@ -34,6 +36,10 @@ function App() {
     });
     setInvoices(updatedInvoices);
   };
+
+  useEffect(() => {
+    localStorage.setItem("invoices", JSON.stringify(invoices));
+  }, [invoices]);
 
   return (
     <div className="App">
