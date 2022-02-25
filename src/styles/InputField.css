@@ -28,6 +28,11 @@
   cursor: pointer;
 }
 
+.InputField-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .InputField-input:invalid[focused="true"] {
   border-color: var(--red);
 }

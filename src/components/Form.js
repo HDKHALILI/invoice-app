@@ -319,6 +319,7 @@ function Form(props) {
           name="createdAt"
           value={createdAt}
           label="Invoice Date"
+          disable={props.type === "edit"}
           onChange={handleChange}
           error={errors.createdAt}
         />
