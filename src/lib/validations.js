@@ -1,79 +1,48 @@
-const validations = {
-  createdAt: {
-    required: {
-      value: true,
-      message: "The field is required",
-    },
-  },
-  description: {
-    required: {
-      value: true,
-      message: "The field is required",
-    },
-  },
-  paymentTerm: {
-    required: {
-      value: true,
-      message: "The field is required",
-    },
-  },
-  clientName: {
-    required: {
-      value: true,
-      message: "The field is required",
-    },
-  },
-};
-
 const validateFields = fields => {
   const errors = {};
   let valid = true;
   for (const key in fields) {
     const value = fields[key];
     if (!value) {
-      errors[key] = "Can't be empty";
       valid = false;
+      errors[key] = "Can't be empty";
     }
   }
 
-  return { messages: errors, valid };
+  return { errors, valid };
 };
 
-function validate(invoice) {
-  const errors = {};
-  let valid = true;
-  for (const key in invoice) {
-    if (key === "senderAddress") {
-      const newErrors = validateFields(invoice.senderAddress);
-      errors.senderAddress = newErrors.messages;
-      valid = newErrors.valid;
-    } else if (key === "clientAddress") {
-      const newErrors = validateFields(invoice.clientAddress);
-      errors.clientAddress = newErrors.messages;
-      valid = newErrors.valid;
-    } else if (key === "items") {
-      errors.items = [];
-      if (invoice.items.length) {
-        let validFields = true;
-        invoice.items.forEach(item => {
-          const newErrors = validateFields(item);
-          errors.items.push(newErrors.messages);
-          validFields = newErrors.valid;
-        });
-        valid = validFields;
-        console.log("items valid", valid);
-      }
-    } else {
-      const value = invoice[key];
-      if (!value) {
-        errors[key] = "Can't be empty";
-        valid = false;
-      }
-    }
-  }
-
-  console.log(valid);
-  return { ...errors, valid };
+function validateAfield(value) {
+  return !value ? "Can't be empty" : "";
 }
 
-export default validate;
+function validateAllFields(requiredFields, fields) {
+  const errors = { ...requiredFields };
+  let validAddress = true;
+  let validItems = true;
+  let validOthers = true;
+  Object.keys(requiredFields).forEach(key => {
+    const value = fields[key];
+    if (key === "senderAddress" || key === "clientAddress") {
+      const address = fields[key];
+      const addressErrors = validateFields(address);
+      errors[key] = { ...addressErrors.errors };
+      validAddress = addressErrors.valid;
+    } else if (key === "items") {
+      fields.items.forEach((field, index) => {
+        const itemErrors = validateFields(field);
+        errors.items[index] = itemErrors.errors;
+        validItems = itemErrors.valid;
+      });
+    } else {
+      const error = validateAfield(value);
+      if (error) {
+        validOthers = false;
+        errors[key] = error;
+      }
+    }
+  });
+
+  return { ...errors, valid: validAddress && validItems && validOthers };
+}
+export { validateAfield, validateFields, validateAllFields };

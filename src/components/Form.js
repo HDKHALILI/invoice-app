@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import generateId from "../lib/generateId";
 import { toNumber, calcItemTotal } from "../lib/utilities";
-import validate from "../lib/validations";
+import { validateAfield, validateAllFields } from "../lib/validations";
 
 import InputField from "./InputField";
 import ItemListInput from "./ItemListInputs";
@@ -57,19 +57,44 @@ const ITEM_DEFAULT = {
   price: "",
   total: "",
 };
+
+const REQUIRED_FIELDS = {
+  createdAt: "",
+  description: "",
+  paymentTerms: "",
+  clientName: "",
+  clientEmail: "",
+  senderAddress: {
+    street: "",
+    city: "",
+    postCode: "",
+    country: "",
+  },
+  clientAddress: {
+    street: "",
+    city: "",
+    postCode: "",
+    country: "",
+  },
+  items: [],
+};
+
 function Form(props) {
   const [values, setValues] = useState(props.initialValues);
-  const [errors, setErrors] = useState({ ...props.initialValues, valid: true });
+  const [errors, setErrors] = useState({ ...REQUIRED_FIELDS, valid: true });
 
   const handleChange = ({ target }) => {
     setValues({ ...values, [target.name]: target.value });
+    setErrors({
+      ...errors,
+      [target.name]: validateAfield(target.value),
+    });
   };
 
   useEffect(() => {
-    if (!errors.valid) {
-      console.log("error triggered");
-      setErrors(validate(values));
-    }
+    // if (!errors.valid) {
+    //   console.log("error triggered");
+    // }
   }, [values]);
 
   const handleSenderAddressChange = ({ target }) => {
@@ -79,6 +104,16 @@ function Form(props) {
         ...values.senderAddress,
         [target.name]: target.value,
       },
+    });
+
+    const addressErrors = {
+      ...errors.senderAddress,
+      [target.name]: validateAfield(target.value),
+    };
+
+    setErrors({
+      ...errors,
+      senderAddress: addressErrors,
     });
   };
 
@@ -90,6 +125,16 @@ function Form(props) {
         [target.name]: target.value,
       },
     });
+
+    const addressErrors = {
+      ...errors.clientAddress,
+      [target.name]: validateAfield(target.value),
+    };
+
+    setErrors({
+      ...errors,
+      clientAddress: addressErrors,
+    });
   };
 
   const handleItemChange = (index, { target }) => {
@@ -99,6 +144,13 @@ function Form(props) {
     currentItem.total = calcItemTotal(currentItem);
     itemsCopy[index] = currentItem;
     setValues({ ...values, items: itemsCopy });
+
+    const currentItemError = { ...errors.items[index] };
+    const itemErrorCopy = errors.items.slice();
+    currentItemError[target.name] = validateAfield(target.value);
+    currentItemError.total = "valid";
+    itemErrorCopy[index] = currentItemError;
+    setErrors({ ...errors, items: itemErrorCopy });
   };
 
   const deleteItem = index => {
@@ -114,14 +166,13 @@ function Form(props) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const newErrors = validate(values);
-    console.log("new error", newErrors);
+    const newErrors = validateAllFields(REQUIRED_FIELDS, values);
     if (!newErrors.valid) {
       setErrors(newErrors);
       return;
     }
 
-    setErrors({});
+    setErrors({ ...REQUIRED_FIELDS, valid: true });
     props.handleSubmit(values);
     props.closeForm();
   };
@@ -131,7 +182,6 @@ function Form(props) {
     closeForm();
   };
 
-  console.log("errors object", errors);
   const {
     createdAt,
     description,
@@ -276,8 +326,8 @@ function Form(props) {
               id="form-select"
               value={paymentTerms}
               onChange={handleChange}
-              className={errors.paymentTerms && "invalid"}
             >
+              <option>select payment terms</option>
               <option value="1">Net 1 Day</option>
               <option value="7">Net 7 Days</option>
               <option value="14">Net 14 Days</option>
@@ -320,7 +370,7 @@ function Form(props) {
             total={item.total}
             deleteItem={deleteItem}
             onChange={handleItemChange}
-            errors={errors.items[index]}
+            errors={errors.items[index] || {}}
           />
         ))}
         <button
@@ -364,9 +414,15 @@ function Form(props) {
               >
                 Save as Draft
               </button>
-              <button type="submit" className="btn btn-violet color-white">
+              <input
+                type="submit"
+                value="Save & Send"
+                className="btn btn-violet color-white"
+              />
+
+              {/* <button type="submit" className="btn btn-violet color-white">
                 Save & Send
-              </button>
+              </button> */}
             </div>
           </div>
         )}
