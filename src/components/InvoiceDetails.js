@@ -4,6 +4,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import InvoiceEdit from "./InvoiceEdit";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import iconArrowLeft from "../assets/icon-arrow-left.svg";
+import generateId from "../lib/generateId";
 import "../styles/InvoiceDetails.css";
 
 function InvoiceDetails(props) {
@@ -159,33 +160,36 @@ function InvoiceDetails(props) {
               </div>
               <div className="InvoiceDetails-item-qty text-right">
                 <span className="mb-xlarge">Qty</span>
-                {items.map(item => (
-                  <span
-                    key={`${item.name}${item.quantity}`}
-                    className="mb-xlarge"
-                  >
-                    {item.quantity}
-                  </span>
-                ))}
+                {items.map(item => {
+                  const key = generateId();
+                  return (
+                    <span key={key} className="mb-xlarge">
+                      {item.quantity}
+                    </span>
+                  );
+                })}
               </div>
               <div className="InvoiceDetails-item-price text-right">
                 <span className="mb-xlarge">Price</span>
-                {items.map(item => (
-                  <span key={item.price} className="mb-xlarge">
-                    &pound;{item.price}
-                  </span>
-                ))}
+                {items.map(item => {
+                  const key = generateId();
+                  return (
+                    <span key={key} className="mb-xlarge">
+                      &pound;{item.price}
+                    </span>
+                  );
+                })}
               </div>
               <div className="InvoiceDetails-item-total text-right">
                 <span className="mb-xlarge">Total</span>
-                {items.map(item => (
-                  <span
-                    key={item.total}
-                    className="bold color-black-900 mb-xlarge"
-                  >
-                    &pound;{item.total}
-                  </span>
-                ))}
+                {items.map(item => {
+                  const key = generateId();
+                  return (
+                    <span key={key} className="bold color-black-900 mb-xlarge">
+                      &pound;{item.total}
+                    </span>
+                  );
+                })}
               </div>
             </div>
             <div className="InvoiceDetails-jobs-mobile">
