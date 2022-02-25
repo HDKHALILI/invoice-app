@@ -5,6 +5,7 @@ import InvoiceEdit from "./InvoiceEdit";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import iconArrowLeft from "../assets/icon-arrow-left.svg";
 import generateId from "../lib/generateId";
+import { capitalise } from "../lib/utilities";
 import "../styles/InvoiceDetails.css";
 
 function InvoiceDetails(props) {
@@ -74,7 +75,7 @@ function InvoiceDetails(props) {
             <span className="color-gray-blue">Status</span>
             <span className={`status bold bg-${status} color-${status}`}>
               <span>&#9679;</span>
-              {status}
+              {capitalise(status)}
             </span>
           </div>
           <div className="InvoiceDetails-actions hidden">

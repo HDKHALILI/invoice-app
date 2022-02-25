@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+
+import { capitalise } from "../lib/utilities";
 import iconArrowRight from "../assets/icon-arrow-right.svg";
 import "../styles/Invoice.css";
 
@@ -22,7 +24,7 @@ function Invoice(props) {
         </div>
         <div className={`Invoice-status bold bg-${status} color-${status}`}>
           <span>&#9679;</span>
-          {status}
+          {capitalise(status)}
         </div>
         <div className="Invoice-arrow-left hidden">
           <img src={iconArrowRight} alt="arrow right" />

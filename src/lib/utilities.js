@@ -27,4 +27,14 @@ const toNumber = target => {
   return target.value;
 };
 
-export { calcPaymentDue, calcInvoiceTotal, calcItemTotal, toNumber };
+const capitalise = word => {
+  return word[0].toUpperCase() + word.slice(1);
+};
+
+export {
+  calcPaymentDue,
+  calcInvoiceTotal,
+  calcItemTotal,
+  toNumber,
+  capitalise,
+};
