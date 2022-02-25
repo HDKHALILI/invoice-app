@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import Invoice from "./Invoice";
 import iconPlus from "../assets/icon-plus.svg";
@@ -24,8 +24,9 @@ function Invoices(props) {
   const [filterStatus, setFilterStatus] = useState("close");
   const [filters, setFilters] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const ref = useRef(null);
 
-  const handleFilterStatus = event => {
+  const handleFilterStatus = () => {
     setFilterStatus(filterStatus === "close" ? "open" : "close");
   };
 
@@ -40,6 +41,20 @@ function Invoices(props) {
   const handleShowForm = () => {
     setShowForm(!showForm);
   };
+
+  useEffect(() => {
+    const clickOutSide = event => {
+      if (filterStatus && ref.current && !ref.current.contains(event.target)) {
+        handleFilterStatus();
+      }
+    };
+
+    document.addEventListener("click", clickOutSide);
+
+    return () => {
+      document.removeEventListener("click", clickOutSide);
+    };
+  }, [filterStatus]);
 
   const filteredInvoices = filterInvoices(props.invoices, filters);
 
@@ -59,7 +74,7 @@ function Invoices(props) {
             <span className="hidden">total</span> invoices
           </p>
         </div>
-        <div className="Invoices-actions">
+        <div className="Invoices-actions" ref={ref}>
           <div className="Invoices-filter-container">
             <span
               className="Invoices-filter-triger bold"
@@ -79,6 +94,7 @@ function Invoices(props) {
                     type="checkbox"
                     id="paid"
                     value="paid"
+                    checked={filters.includes("paid")}
                     className="checkbox"
                     onChange={handleFilterChange}
                   />
@@ -91,6 +107,7 @@ function Invoices(props) {
                     type="checkbox"
                     id="pending"
                     value="pending"
+                    checked={filters.includes("pending")}
                     className="checkbox"
                     onChange={handleFilterChange}
                   />
@@ -103,6 +120,7 @@ function Invoices(props) {
                     type="checkbox"
                     id="draft"
                     value="draft"
+                    checked={filters.includes("draft")}
                     className="checkbox"
                     onChange={handleFilterChange}
                   />
