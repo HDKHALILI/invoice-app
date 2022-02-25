@@ -45,14 +45,14 @@ function Invoices(props) {
   useEffect(() => {
     const clickOutSide = event => {
       if (filterStatus && ref.current && !ref.current.contains(event.target)) {
-        handleFilterStatus();
+        setFilterStatus("close");
       }
     };
 
-    document.addEventListener("click", clickOutSide);
+    document.addEventListener("mousedown", clickOutSide);
 
     return () => {
-      document.removeEventListener("click", clickOutSide);
+      document.removeEventListener("mousedown", clickOutSide);
     };
   }, [filterStatus]);
 
@@ -74,8 +74,8 @@ function Invoices(props) {
             <span className="hidden">total</span> invoices
           </p>
         </div>
-        <div className="Invoices-actions" ref={ref}>
-          <div className="Invoices-filter-container">
+        <div className="Invoices-actions">
+          <div className="Invoices-filter-container" ref={ref}>
             <span
               className="Invoices-filter-triger bold"
               onClick={handleFilterStatus}
