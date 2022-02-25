@@ -161,14 +161,22 @@ function Form(props) {
 
   const addItem = () => {
     setValues({ ...values, items: [...values.items, ITEM_DEFAULT] });
-    setErrors({ ...errors, items: [...errors.items, ITEM_DEFAULT] });
+    setErrors({
+      ...errors,
+      items: [...errors.items, ITEM_DEFAULT],
+      itemRequired: "",
+    });
   };
 
   const handleSubmit = event => {
     event.preventDefault();
     const newErrors = validateAllFields(REQUIRED_FIELDS, values);
     if (!newErrors.valid) {
-      setErrors(newErrors);
+      setErrors({
+        ...newErrors,
+        itemRequired: !values.items.length ? "- An item must be added" : "",
+        allRequired: "- All fields must be added",
+      });
       return;
     }
 
@@ -380,6 +388,10 @@ function Form(props) {
         >
           + Add New Item
         </button>
+        <div className="Form-error-messages color-red mt-large">
+          <p className="mb-small">{errors.itemRequired}</p>
+          <p>{errors.allRequired}</p>
+        </div>
       </div>
       <div className="Form-control-buttons">
         {props.type === "edit" ? (

@@ -2,7 +2,8 @@ import { useState } from "react";
 import "../styles/InputField.css";
 
 function InputField(props) {
-  const { type, value, name, label, error, hideMessage, onChange } = props;
+  const { type, value, name, label, error, hideMessage, disable, onChange } =
+    props;
   const showError = error && !hideMessage;
   return (
     <fieldset className={`InputField ${error && "error"}`}>
@@ -14,6 +15,7 @@ function InputField(props) {
         type={type}
         value={value}
         name={name}
+        disabled={disable}
         onChange={onChange}
         className={`InputField-input bold ${error && "invalid"}`}
       />
