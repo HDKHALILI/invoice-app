@@ -8,7 +8,7 @@ function InputField(props) {
     <fieldset className={`InputField ${error && "error"}`}>
       <div className="InputField-labels mb-small">
         <label>{label}</label>
-        {showError && <span className="color-red hidden">{error}</span>}
+        {showError && <span className="color-red">{error}</span>}
       </div>
       <input
         type={type}

@@ -268,7 +268,9 @@ function Form(props) {
           <label className="mb-small" htmlFor="form-select">
             Payment Terms
           </label>
-          <div className="Form-select bold">
+          <div
+            className={`Form-select bold ${errors.paymentTerms && "invalid"}`}
+          >
             <select
               name="paymentTerms"
               id="form-select"
