@@ -42,7 +42,7 @@ function App() {
   }, [invoices]);
 
   return (
-    <div className="App">
+    <div className="App theme-dark">
       <header className="App-header">
         <Nav />
       </header>

@@ -126,6 +126,12 @@
   transform: rotate(0deg);
 }
 
+/* Dark Theme */
+.theme-dark .Invoices {
+  color: #fff;
+}
+
+/* Media Queries */
 @media screen and (max-width: 890px) {
   .Invoices {
     margin-top: 5.3rem;

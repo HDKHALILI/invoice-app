@@ -69,7 +69,7 @@ function Invoices(props) {
       <section className="Invoices-header">
         <div className="Invoices-titles">
           <h1>Invoices</h1>
-          <p>
+          <p className="color-gray-blue">
             <span className="hidden">There are</span> 7{" "}
             <span className="hidden">total</span> invoices
           </p>

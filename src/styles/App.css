@@ -12,6 +12,10 @@
   padding-top: 6rem;
 }
 
+.theme-dark {
+  background-color: var(--black-800);
+}
+
 @media screen and (max-width: 890px) {
   .App {
     flex-direction: column;

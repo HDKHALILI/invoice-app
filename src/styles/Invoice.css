@@ -123,6 +123,19 @@
   }
 } */
 
+/* Dark Theme */
+.theme-dark .Invoice {
+  background-color: var(--gray-dark);
+  box-shadow: 0 10px 10px 0px rgb(30, 33, 57, 0.1);
+}
+
+.theme-dark .Invoice-amount,
+.theme-dark .Invoice-id {
+  color: #fff;
+}
+
+/* Media Queries */
+
 @media screen and (max-width: 600px) {
   .Invoice-basic-info {
     align-items: center;

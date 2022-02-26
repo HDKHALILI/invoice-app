@@ -133,6 +133,11 @@ a {
   background-color: rgba(55, 59, 83, 0.06);
 }
 
+.theme-dark .bg-draft {
+  background-color: rgb(223, 227, 250, 0.06);
+  color: #fff;
+}
+
 /* Button */
 .btn {
   border: none;
