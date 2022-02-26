@@ -1,7 +1,7 @@
 .Invoices {
   width: 77rem;
   max-width: 77rem;
-  padding: 0 2rem;
+  padding: 0 2rem 3rem;
 }
 
 .Invoices-header {
@@ -129,6 +129,20 @@
 /* Dark Theme */
 .theme-dark .Invoices {
   color: #fff;
+}
+
+.theme-dark .Invoices-filter-options {
+  background-color: var(--denim);
+  box-shadow: 0 10px 10px 0px rgb(0, 0, 0, 0.25);
+  /* box-shadow: 0 10px 10px 0px rgb(30, 33, 57, 0.5); */
+}
+
+.theme-dark .checkbox {
+  background-color: var(--gray-dark);
+}
+
+.theme-dark .checkbox:checked {
+  background-color: var(--violet);
 }
 
 /* Media Queries */

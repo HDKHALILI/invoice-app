@@ -30,3 +30,13 @@
   display: flex;
   justify-content: flex-end;
 }
+
+/* Dark Theme */
+.theme-dark .ConfirmDeleteModal-body {
+  background-color: var(--gray-dark);
+  color: #fff;
+}
+
+.theme-dark .ConfirmDeleteModal-body p {
+  color: var(--gray-blue-light);
+}

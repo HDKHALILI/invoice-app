@@ -23,6 +23,12 @@
   overscroll-behavior: contain;
 }
 
+/* Dark Theme */
+.theme-dark .InvoiceEdit-content {
+  background-color: var(--black-800);
+}
+
+/* Media Queries */
 @media screen and (max-width: 890px) {
   .InvoiceEdit {
     top: 0;

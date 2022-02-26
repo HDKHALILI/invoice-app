@@ -72,7 +72,7 @@ function InvoiceDetails(props) {
         </Link>
         <header className="InvoiceDetails-header">
           <div className="InvoiceDetails-status-container">
-            <span className="color-gray-blue">Status</span>
+            <span>Status</span>
             <span className={`status bold bg-${status} color-${status}`}>
               <span>&#9679;</span>
               {capitalise(status)}
@@ -97,9 +97,9 @@ function InvoiceDetails(props) {
         <section className="InvoiceDetails-content color-gray-blue">
           <div className="InvoiceDetails-content-top-row">
             <div>
-              <div className="mb-medium font-size-medium">
+              <div className="Invoice-details-id mb-medium font-size-medium">
                 <span>#</span>
-                <span className="color-black-900 bold">{id}</span>
+                <span className="bold-text-color bold">{id}</span>
               </div>
               <span>{description}</span>
             </div>
@@ -115,20 +115,20 @@ function InvoiceDetails(props) {
               <div className="InvoiceDetails-dates">
                 <div>
                   Invoice Date
-                  <span className="bold font-size-medium mt-medium color-black-900">
+                  <span className="bold font-size-medium mt-medium bold-text-color">
                     {createdAt}
                   </span>
                 </div>
                 <div>
                   Payment Due
-                  <span className="bold font-size-medium mt-medium color-black-900">
+                  <span className="bold font-size-medium mt-medium bold-text-color">
                     {paymentDue}
                   </span>
                 </div>
               </div>
               <div className="InvoiceDetails-client">
                 <span className="mb-medium">Bill to</span>
-                <h1 className="font-size-medium color-black-900 mb-medium">
+                <h1 className="font-size-medium bold-text-color mb-medium">
                   {clientName}
                 </h1>
                 <div className="InvoiceDetails-client-address">
@@ -141,7 +141,7 @@ function InvoiceDetails(props) {
             </div>
             <div className="InvoiceDetails-client-email">
               <span className="mb-medium">Sent to</span>
-              <span className="bold color-black-900 font-size-medium">
+              <span className="bold bold-text-color font-size-medium">
                 {clientEmail}
               </span>
             </div>
@@ -153,7 +153,7 @@ function InvoiceDetails(props) {
                 {items.map(item => (
                   <span
                     key={item.name}
-                    className="bold mb-xlarge color-black-900"
+                    className="bold mb-xlarge bold-text-color"
                   >
                     {item.name}
                   </span>
@@ -186,7 +186,7 @@ function InvoiceDetails(props) {
                 {items.map(item => {
                   const key = generateId();
                   return (
-                    <span key={key} className="bold color-black-900 mb-xlarge">
+                    <span key={key} className="bold bold-text-color mb-xlarge">
                       &pound;{item.total}
                     </span>
                   );
@@ -200,7 +200,7 @@ function InvoiceDetails(props) {
                   key={item.name}
                 >
                   <div className="InvoiceDetails-items-mobile mb-xlarge">
-                    <span className="bold mb-xsmall color-black-900">
+                    <span className="bold mb-xsmall bold-text-color">
                       {item.name}
                     </span>
                     <span>
@@ -208,7 +208,7 @@ function InvoiceDetails(props) {
                     </span>
                   </div>
                   <div className="InvoiceDetails-item-total-mobile text-right">
-                    <span className="bold color-black-900">
+                    <span className="bold bold-text-color">
                       &pound;{item.total}
                     </span>
                   </div>

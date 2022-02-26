@@ -336,7 +336,7 @@ function Form(props) {
               value={paymentTerms}
               onChange={handleChange}
             >
-              <option>select payment terms</option>
+              <option value="">select payment terms</option>
               <option value="1">Net 1 Day</option>
               <option value="7">Net 7 Days</option>
               <option value="14">Net 14 Days</option>

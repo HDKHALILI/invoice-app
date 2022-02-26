@@ -26,6 +26,12 @@
   display: none;
 }
 
+/* Dark Theme */
+.theme-dark .InvoiceNew-content {
+  background-color: var(--black-800);
+}
+
+/* Media Queries */
 @media screen and (max-width: 890px) {
   .InvoiceNew {
     top: 0;

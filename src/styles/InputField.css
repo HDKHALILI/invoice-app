@@ -10,7 +10,7 @@
 }
 
 .InputField-input {
-  border: 2px solid var(--gray-blue-light);
+  border: 1px solid var(--gray-blue-light);
   border-radius: 0.4rem;
   padding: 1.4rem 1.5rem;
   width: 100%;
@@ -20,7 +20,7 @@
 
 .InputField-input:focus,
 .InputField-input:active {
-  border: 2px solid var(--violet-light);
+  border: 1px solid var(--violet-light);
   outline: none;
 }
 
@@ -33,14 +33,32 @@
   cursor: not-allowed;
 }
 
-.InputField-input:invalid[focused="true"] {
-  border-color: var(--red);
+.disabled {
+  opacity: 0.5;
 }
 
-.invalid {
+.InputField-input:invalid[focused="true"] {
   border-color: var(--red);
 }
 
 .error {
   color: var(--red);
+}
+
+/* Dark Theme */
+.theme-dark .InputField-input {
+  background-color: var(--gray-dark);
+  border-color: var(--denim);
+  color: #fff;
+}
+
+.theme-dark .InputField-input:focus,
+.theme-dark .InputField-input:active {
+  border: 1px solid var(--violet-light);
+  outline: none;
+}
+
+.invalid,
+.theme-dark .invalid {
+  border-color: var(--red);
 }

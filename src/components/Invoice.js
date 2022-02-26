@@ -10,7 +10,7 @@ function Invoice(props) {
     <Link to={`details/${id}`} href="/" className="Invoice">
       <div className="Invoice-basic-info color-gray-blue">
         <div className="Invoice-id-duedate">
-          <div className="Invoice-id color-black-900 bold">
+          <div className="Invoice-id bold-text-color bold">
             <span className="color-gray-blue">#</span>
             <span>{id}</span>
           </div>
@@ -19,7 +19,7 @@ function Invoice(props) {
         <span className="Invoice-client-name">{clientName}</span>
       </div>
       <div className="Invoice-amount-info">
-        <div className="Invoice-amount color-black-900 bold">
+        <div className="Invoice-amount bold-text-color bold">
           <span>&pound;{total}</span>
         </div>
         <div className={`Invoice-status bold bg-${status} color-${status}`}>

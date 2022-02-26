@@ -8,7 +8,7 @@
 .InvoiceDetails-main {
   display: flex;
   flex-direction: column;
-  padding: 0 2rem;
+  padding: 0 2rem 3rem;
   width: 100%;
 }
 
@@ -157,6 +157,29 @@
   width: 14.9rem;
 }
 
+/* Dark Theme */
+.theme-dark .InvoiceDetails-header,
+.theme-dark .InvoiceDetails-content {
+  background-color: var(--gray-dark);
+  box-shadow: 0 10px 10px 0px rgb(30, 33, 57, 0.1);
+  color: var(--gray-blue-light);
+}
+
+.theme-dark .InvoiceDetails-content-bottom-row {
+  background-color: var(--denim);
+  color: var(--gray-blue-light);
+}
+
+.theme-dark .InvoiceDetails-total {
+  background-color: var(--black-900);
+  color: #fff;
+}
+
+.theme-dark .InvoiceDetails-footer {
+  background-color: var(--gray-dark);
+}
+
+/* Media Queries */
 @media screen and (max-width: 890px) {
   .InvoiceDetails-main {
     padding-top: 6rem;

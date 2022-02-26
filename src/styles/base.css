@@ -74,6 +74,14 @@ a {
   color: var(--red);
 }
 
+.bold-text-color {
+  color: var(--black-900);
+}
+
+.theme-dark .bold-text-color {
+  color: #fff;
+}
+
 /* Typography */
 .bold {
   font-weight: 700;
@@ -175,6 +183,20 @@ a {
   background-color: var(--gray-blue-light);
 }
 
+.theme-dark .btn-edit,
+.theme-dark .btn-cancel,
+.theme-dark .btn-add-item {
+  background-color: var(--denim);
+  color: var(--gray-blue-light);
+}
+
+.theme-dark .btn-edit:hover,
+.theme-dark .btn-cancel:hover,
+.theme-dark .btn-add-item:hover {
+  background-color: #fff;
+  color: var(--gray);
+}
+
 .btn-delete {
   background-color: var(--red);
 }
@@ -261,9 +283,14 @@ a {
   transition: color 0.3s;
 }
 
+.theme-dark .go-back {
+  color: #fff;
+}
+
 .go-back:hover {
   color: var(--gray-blue);
 }
+
 /* Imports */
 @import "./App.css";
 @import "./Nav.css";
