@@ -40,6 +40,16 @@
 .Nav-theme-selector {
   background: transparent;
   border: none;
+  cursor: pointer;
+}
+
+.Nav-theme-selector svg {
+  fill: var(--gray);
+  transition: fill 0.3s;
+}
+
+.Nav-theme-selector:hover svg {
+  fill: var(--gray-blue-light);
 }
 
 .Nav-profile {

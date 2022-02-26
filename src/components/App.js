@@ -10,6 +10,11 @@ function App() {
   const [invoices, setInvoices] = useState(
     JSON.parse(localStorage.getItem("invoices")) || invoicesData
   );
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
 
   const createInvoice = newInvoice => {
     setInvoices([...invoices, newInvoice]);
@@ -42,9 +47,9 @@ function App() {
   }, [invoices]);
 
   return (
-    <div className="App theme-dark">
+    <div className={`App theme-${theme}`}>
       <header className="App-header">
-        <Nav />
+        <Nav theme={theme} toggleTheme={toggleTheme} />
       </header>
       <main className="App-content">
         <Routes>
