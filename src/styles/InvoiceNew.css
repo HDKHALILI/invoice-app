@@ -1,17 +1,16 @@
 .InvoiceNew {
   background-color: rgba(0, 0, 0, 0.6);
-  width: 100vw;
-  height: 100vh;
-  max-height: 100vh;
+  width: calc(100% - 10.3rem);
+  height: 100%;
+  max-height: 100%;
   display: flex;
   flex-wrap: wrap;
-  position: absolute;
+  position: fixed;
   top: 0;
   /* left: 10.3rem; */
   left: 10.3rem;
   z-index: 3;
   overscroll-behavior: contain;
-  overflow: hidden;
 }
 
 .InvoiceNew-content {
@@ -37,6 +36,8 @@
 /* Media Queries */
 @media screen and (max-width: 890px) {
   .InvoiceNew {
+    position: fixed;
+    width: 100%;
     top: 0;
     left: 0;
   }
