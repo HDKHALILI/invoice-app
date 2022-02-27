@@ -47,6 +47,15 @@ function validateAllFields(requiredFields, fields) {
     }
   });
 
-  return { ...errors, valid: validAddress && validItems && validOthers };
+  return {
+    ...errors,
+    valid: validAddress && validItems && validOthers,
+    validOthers,
+    validItems,
+  };
 }
-export { validateAfield, validateFields, validateAllFields };
+
+function areAllFieldsValid(requiredFields, fields) {
+  return validateAllFields(requiredFields, fields).valid;
+}
+export { validateAfield, validateFields, validateAllFields, areAllFieldsValid };

@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 
 import generateId from "../lib/generateId";
 import { toNumber, calcItemTotal } from "../lib/utilities";
-import { validateAfield, validateAllFields } from "../lib/validations";
+import {
+  validateAfield,
+  validateAllFields,
+  areAllFieldsValid,
+} from "../lib/validations";
 
 import InputField from "./InputField";
 import ItemListInput from "./ItemListInputs";
@@ -91,12 +95,6 @@ function Form(props) {
     });
   };
 
-  useEffect(() => {
-    // if (!errors.valid) {
-    //   console.log("error triggered");
-    // }
-  }, [values]);
-
   const handleSenderAddressChange = ({ target }) => {
     setValues({
       ...values,
@@ -116,6 +114,16 @@ function Form(props) {
       senderAddress: addressErrors,
     });
   };
+
+  useEffect(() => {
+    const isFormValid = areAllFieldsValid(REQUIRED_FIELDS, values);
+    if (!errors.valid) {
+      setErrors(errors => ({
+        ...errors,
+        allRequired: isFormValid ? "" : "- All fields must be added",
+      }));
+    }
+  }, [values, errors.valid]);
 
   const handleClientAddressChange = ({ target }) => {
     setValues({
@@ -150,7 +158,10 @@ function Form(props) {
     currentItemError[target.name] = validateAfield(target.value);
     currentItemError.total = "valid";
     itemErrorCopy[index] = currentItemError;
-    setErrors({ ...errors, items: itemErrorCopy });
+    setErrors({
+      ...errors,
+      items: itemErrorCopy,
+    });
   };
 
   const deleteItem = index => {
@@ -163,7 +174,7 @@ function Form(props) {
     setValues({ ...values, items: [...values.items, ITEM_DEFAULT] });
     setErrors({
       ...errors,
-      items: [...errors.items, ITEM_DEFAULT],
+      items: [...errors.items],
       itemRequired: "",
     });
   };
@@ -175,12 +186,17 @@ function Form(props) {
       setErrors({
         ...newErrors,
         itemRequired: !values.items.length ? "- An item must be added" : "",
-        allRequired: "- All fields must be added",
+        allRequired: newErrors.validOthers ? "" : "- All fields must be added",
       });
       return;
     }
 
-    setErrors({ ...REQUIRED_FIELDS, valid: true });
+    setErrors({
+      ...REQUIRED_FIELDS,
+      valid: true,
+      allRequired: "",
+      itemRequired: "",
+    });
     props.handleSubmit(values);
     props.closeForm();
   };

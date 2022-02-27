@@ -47,6 +47,14 @@ function App() {
     localStorage.setItem("theme", theme);
   }, [invoices, theme]);
 
+  useEffect(() => {
+    if (theme === "dark") {
+      document.body.style.backgroundColor = "#141625";
+    } else {
+      document.body.style.backgroundColor = "#f8f8fb";
+    }
+  }, [theme]);
+
   return (
     <div className={`App theme-${theme}`}>
       <header className="App-header">

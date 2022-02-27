@@ -1,6 +1,4 @@
 import logo from "../assets/logo.svg";
-import iconSun from "../assets/icon-sun.svg";
-import iconMoon from "../assets/icon-moon.svg";
 import avatar from "../assets/image-avatar.jpg";
 
 import "../styles/Nav.css";
@@ -13,7 +11,7 @@ function Nav(props) {
         <div className="Nav-logo-container">
           <img src={logo} alt="logo" className="Nav-logo" />
         </div>
-        <button className="Nav-theme-selector" onClick={props.toggleTheme}>
+        <button className="Nav-theme-selector" onClick={toggleTheme}>
           {/* <img
             src={theme === "light" ? iconMoon : iconSun}
             alt="theme"

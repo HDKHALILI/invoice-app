@@ -37,7 +37,7 @@ function InvoiceNew(props) {
       id,
       status: "pending",
       paymentDue,
-      total: calcInvoiceTotal(invoice),
+      total,
     });
   };
 
