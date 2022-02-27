@@ -41,6 +41,10 @@
   border-color: var(--red);
 }
 
+.invalid {
+  border-color: var(--red);
+}
+
 .error {
   color: var(--red);
 }
@@ -58,7 +62,6 @@
   outline: none;
 }
 
-.invalid,
 .theme-dark .invalid {
   border-color: var(--red);
 }

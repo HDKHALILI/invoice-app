@@ -29,11 +29,15 @@ function validateAllFields(requiredFields, fields) {
       errors[key] = { ...addressErrors.errors };
       validAddress = addressErrors.valid;
     } else if (key === "items") {
-      fields.items.forEach((field, index) => {
-        const itemErrors = validateFields(field);
-        errors.items[index] = itemErrors.errors;
-        validItems = itemErrors.valid;
-      });
+      if (fields.items.length) {
+        fields.items.forEach((field, index) => {
+          const itemErrors = validateFields(field);
+          errors.items[index] = itemErrors.errors;
+          validItems = itemErrors.valid;
+        });
+      } else {
+        validItems = false;
+      }
     } else {
       const error = validateAfield(value);
       if (error) {

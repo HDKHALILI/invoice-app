@@ -152,7 +152,7 @@ select {
 .Form-select {
   width: 100%;
   height: 100%;
-  border: 2px solid var(--gray-blue-light);
+  border: 1px solid var(--gray-blue-light);
   border-radius: 0.4rem;
   padding: 1.4rem 1.5rem;
   cursor: pointer;
@@ -184,8 +184,12 @@ select:focus + .focus {
   left: -1px;
   right: -1px;
   bottom: -1px;
-  border: 2px solid var(--violet);
+  border: 1px solid var(--violet);
   border-radius: inherit;
+}
+
+.invalid {
+  border-color: var(--red);
 }
 
 /* Dark Theme */
@@ -204,6 +208,10 @@ select:focus + .focus {
 
 .theme-dark option {
   background-color: var(--gray-dark);
+}
+
+.theme-dark .invalid {
+  border-color: var(--red);
 }
 
 /* Media Queries */
