@@ -9,6 +9,10 @@
   width: 10.3rem;
   /* padding-bottom: 2rem; */
   /* position: relative; */
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 30;
 }
 
 .Nav-actions {

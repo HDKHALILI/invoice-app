@@ -172,6 +172,12 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  .Invoices {
+    margin-top: 6.8rem;
+  }
+}
+
 @media screen and (max-width: 360px) {
   .Invoices-btn {
     margin-left: 0rem;

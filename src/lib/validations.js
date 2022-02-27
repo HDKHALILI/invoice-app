@@ -20,6 +20,7 @@ function validateAllFields(requiredFields, fields) {
   const errors = { ...requiredFields };
   let validAddress = true;
   let validItems = true;
+  let atleasOneItem = false;
   let validOthers = true;
   Object.keys(requiredFields).forEach(key => {
     const value = fields[key];
@@ -30,13 +31,15 @@ function validateAllFields(requiredFields, fields) {
       validAddress = addressErrors.valid;
     } else if (key === "items") {
       if (fields.items.length) {
+        atleasOneItem = true;
         fields.items.forEach((field, index) => {
           const itemErrors = validateFields(field);
           errors.items[index] = itemErrors.errors;
           validItems = itemErrors.valid;
         });
       } else {
-        validItems = false;
+        atleasOneItem = false;
+        validItems = true;
       }
     } else {
       const error = validateAfield(value);
@@ -49,13 +52,15 @@ function validateAllFields(requiredFields, fields) {
 
   return {
     ...errors,
-    valid: validAddress && validItems && validOthers,
+    valid: validAddress && validItems && validOthers & atleasOneItem,
     validOthers,
     validItems,
+    validFields: validAddress && validOthers,
   };
 }
 
 function areAllFieldsValid(requiredFields, fields) {
-  return validateAllFields(requiredFields, fields).valid;
+  const errors = validateAllFields(requiredFields, fields);
+  return errors.validFields;
 }
 export { validateAfield, validateFields, validateAllFields, areAllFieldsValid };

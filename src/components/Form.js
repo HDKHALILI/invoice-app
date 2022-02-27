@@ -79,7 +79,7 @@ function Form(props) {
         allRequired: isFormValid ? "" : "- All fields must be added",
       }));
     }
-  }, [values, errors.valid]);
+  }, [values]);
 
   const handleClientAddressChange = ({ target }) => {
     setValues({
@@ -138,11 +138,15 @@ function Form(props) {
   const handleSubmit = event => {
     event.preventDefault();
     const newErrors = validateAllFields(REQUIRED_FIELDS, values);
+    const itemsLength = values.items.length;
     if (!newErrors.valid) {
       setErrors({
         ...newErrors,
-        itemRequired: !values.items.length ? "- An item must be added" : "",
-        allRequired: newErrors.validOthers ? "" : "- All fields must be added",
+        itemRequired: !itemsLength ? "- An item must be added" : "",
+        allRequired:
+          newErrors.validFields && !itemsLength
+            ? ""
+            : "- All fields must be added",
       });
       return;
     }

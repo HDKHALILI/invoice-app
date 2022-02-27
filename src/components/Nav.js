@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import logo from "../assets/logo.svg";
 import avatar from "../assets/image-avatar.jpg";
 
@@ -9,15 +11,11 @@ function Nav(props) {
     <nav className="Nav">
       <div className="Nav-actions">
         <div className="Nav-logo-container">
-          <img src={logo} alt="logo" className="Nav-logo" />
+          <Link to="/">
+            <img src={logo} alt="logo" className="Nav-logo" />
+          </Link>
         </div>
         <button className="Nav-theme-selector" onClick={toggleTheme}>
-          {/* <img
-            src={theme === "light" ? iconMoon : iconSun}
-            alt="theme"
-            className="Nav-icon"
-          /> */}
-
           {theme === "light" ? (
             <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
               <path
