@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "../styles/InputField.css";
 
 function InputField(props) {

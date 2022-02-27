@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-import generateId from "../lib/generateId";
 import { toNumber, calcItemTotal } from "../lib/utilities";
 import {
   validateAfield,
@@ -11,49 +10,6 @@ import {
 import InputField from "./InputField";
 import ItemListInput from "./ItemListInputs";
 import "../styles/Form.css";
-const initialValues = {
-  id: "RT3080",
-  createdAt: "2021-08-18",
-  paymentDue: "2021-08-19",
-  description: "Re-branding",
-  paymentTerms: "",
-  clientName: "Jensen Huang",
-  clientEmail: "jensenh@mail.com",
-  status: "paid",
-  senderAddress: {
-    street: "19 Union Terrace",
-    city: "London",
-    postCode: "E1 3EZ",
-    country: "United Kingdom",
-  },
-  clientAddress: {
-    street: "106 Kendell Street",
-    city: "Sharrington",
-    postCode: "NR24 5WQ",
-    country: "United Kingdom",
-  },
-  items: [
-    {
-      name: "Brand Guidelines",
-      quantity: 1,
-      price: 1800.9,
-      total: 1800.9,
-    },
-    {
-      name: "Brand Logo",
-      quantity: 1,
-      price: 2000.9,
-      total: 2000.9,
-    },
-    {
-      name: "Brand redesign",
-      quantity: 1,
-      price: 3000.9,
-      total: 3000.9,
-    },
-  ],
-  total: 1800.9,
-};
 
 const ITEM_DEFAULT = {
   name: "",
@@ -443,15 +399,9 @@ function Form(props) {
               >
                 Save as Draft
               </button>
-              <input
-                type="submit"
-                value="Save & Send"
-                className="btn btn-violet color-white"
-              />
-
-              {/* <button type="submit" className="btn btn-violet color-white">
+              <button type="submit" className="btn btn-violet color-white">
                 Save & Send
-              </button> */}
+              </button>
             </div>
           </div>
         )}
