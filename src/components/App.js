@@ -10,7 +10,7 @@ function App() {
   const [invoices, setInvoices] = useState(
     JSON.parse(localStorage.getItem("invoices")) || invoicesData
   );
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -44,7 +44,8 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("invoices", JSON.stringify(invoices));
-  }, [invoices]);
+    localStorage.setItem("theme", theme);
+  }, [invoices, theme]);
 
   return (
     <div className={`App theme-${theme}`}>
