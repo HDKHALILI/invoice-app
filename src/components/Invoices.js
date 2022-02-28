@@ -6,6 +6,7 @@ import iconArrowDown from "../assets/icon-arrow-down.svg";
 
 import "../styles/Invoices.css";
 import InvoiceNew from "./InvoiceNew";
+import EmptyInvoicesBG from "./EmptyInvoicesBG";
 
 function filterInvoices(invoices, filters) {
   if (filters.length === 0) return invoices;
@@ -56,6 +57,7 @@ function Invoices(props) {
     };
   }, [filterStatus]);
 
+  // const filteredInvoices = filterInvoices([], filters);
   const filteredInvoices = filterInvoices(props.invoices, filters);
 
   return (
@@ -147,16 +149,31 @@ function Invoices(props) {
         </div>
       </section>
       <section className="Invoices-lists">
-        {filteredInvoices.map(invoice => (
-          <Invoice
-            key={invoice.id}
-            id={invoice.id}
-            paymentDue={invoice.paymentDue}
-            clientName={invoice.clientName}
-            status={invoice.status}
-            total={invoice.total}
-          />
-        ))}
+        {filteredInvoices.length ? (
+          filteredInvoices.map(invoice => (
+            <Invoice
+              key={invoice.id}
+              id={invoice.id}
+              paymentDue={invoice.paymentDue}
+              clientName={invoice.clientName}
+              status={invoice.status}
+              total={invoice.total}
+            />
+          ))
+        ) : (
+          <div className="Invoices-bg">
+            <EmptyInvoicesBG />
+            <div className="text-center">
+              <p className="bold font-size-large mb-large">
+                There is nothing here
+              </p>
+              <p>
+                Create an invoice by clicking the{" "}
+                <span className="bold">New Invoice</span> button and get started
+              </p>
+            </div>
+          </div>
+        )}
       </section>
     </div>
   );

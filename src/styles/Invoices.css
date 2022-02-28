@@ -126,6 +126,28 @@
   transform: rotate(0deg);
 }
 
+.Invoices-lists {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.Invoices-bg {
+  width: 24rem;
+  margin-top: 4rem;
+  align-self: center;
+}
+
+.Invoices-bg div {
+  margin-top: 5rem;
+}
+
+.Invoices-bg div p:nth-of-type(2) {
+  color: var(--gray);
+  line-height: 1.5;
+}
+
 /* Dark Theme */
 .theme-dark .Invoices {
   color: #fff;
@@ -143,6 +165,10 @@
 
 .theme-dark .checkbox:checked {
   background-color: var(--violet);
+}
+
+.theme-dark .Invoices-bg div p:nth-of-type(2) {
+  color: var(--gray-blue-light);
 }
 
 /* Media Queries */
@@ -181,5 +207,9 @@
 @media screen and (max-width: 360px) {
   .Invoices-btn {
     margin-left: 0rem;
+  }
+
+  .Invoices-bg {
+    margin-top: 0;
   }
 }
