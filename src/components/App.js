@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Nav from "./Nav";
 import Invoices from "./Invoices";
 import InvoiceDetails from "./InvoiceDetails";
@@ -79,6 +79,7 @@ function App() {
               />
             }
           />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
     </div>
