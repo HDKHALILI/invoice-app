@@ -19,6 +19,12 @@
   /* box-shadow: 0 0px 1px 1px rgba(223, 227, 250); */
 }
 
+.InputField-input[type="text"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 .InputField-input:focus,
 .InputField-input:active {
   border: 1px solid var(--violet-light);
