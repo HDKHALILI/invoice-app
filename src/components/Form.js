@@ -72,13 +72,17 @@ function Form(props) {
   };
 
   useEffect(() => {
-    const isFormValid = areAllFieldsValid(REQUIRED_FIELDS, values);
-    if (!errors.valid) {
-      setErrors(errors => ({
-        ...errors,
-        allRequired: isFormValid ? "" : "- All fields must be added",
-      }));
-    }
+    setErrors(errors => {
+      const isFormValid = areAllFieldsValid(REQUIRED_FIELDS, values);
+      if (!errors.valid) {
+        return {
+          ...errors,
+          allRequired: isFormValid ? "" : "- All fields must be added",
+        };
+      }
+
+      return errors;
+    });
   }, [values]);
 
   const handleClientAddressChange = ({ target }) => {
@@ -131,6 +135,7 @@ function Form(props) {
     setErrors({
       ...errors,
       items: [...errors.items],
+      validItems: true,
       itemRequired: "",
     });
   };

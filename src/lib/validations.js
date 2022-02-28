@@ -55,7 +55,7 @@ function validateAllFields(requiredFields, fields) {
     valid: validAddress && validItems && validOthers & atleasOneItem,
     validOthers,
     validItems,
-    validFields: validAddress && validOthers,
+    validFields: validAddress && validOthers && validItems,
   };
 }
 
